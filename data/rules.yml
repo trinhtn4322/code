@@ -1,0 +1,91 @@
+version: "3.0"
+
+rules:
+
+#Greet
+  - rule: User greets the bot
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Introduction the bot
+    steps:
+      - intent: bot_introduction
+      - action: utter_bot_introduction
+
+  - rule: Introduction company
+    steps:
+      - intent: company_introduction
+      - action: utter_company_introduction
+
+  - rule: Capabilities the bot
+    steps:
+      - intent: bot_capabilities
+      - action: utter_bot_capabilities
+
+  - rule: How to use the bot
+    steps:
+      - intent: bot_how_to_useuse
+      - action: utter_bot_how_to_useuse
+
+  - rule: Limitation of the bot
+    steps:
+      - intent: bot_limitations
+      - action: utter_bot_limitations
+
+# Image
+  - rule: User sends an image
+    steps:
+      - intent: send_image
+      - action: utter_send_image
+
+  - rule: Calculate price
+    steps:
+      - intent: calculate_price
+      - action: calculate_price
+
+  - rule: Recomend about image
+    steps:
+      - intent: bot_recommendations
+      - action: utter_bot_recommendations
+
+  # Basic
+  - rule: User says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: User thanks the bot
+    steps:
+      - intent: thanks
+      - action: utter_thanks
+
+  - rule: User affirm the bot
+    steps:
+      - intent: affirm
+      - action: utter_affirm
+
+  - rule: User deny for bot
+    steps:
+      - intent: deny
+      - action: utter_deny
+
+  - rule: User feedback for bot
+    steps:
+      - intent: feedback
+      - action: utter_feedback
+
+  - rule: User asks for contact information
+    steps:
+      - intent: contact
+      - action: utter_contact
+
+  - rule: process image
+    steps:
+      - intent: detect_encoded_string
+      - action: process_image
+
+  - rule: process fallback
+    steps:
+      - intent: nlu_fallback
+      - action: process_fallback

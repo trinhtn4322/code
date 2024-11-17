@@ -1,0 +1,6 @@
+[
+  {
+    "name": "image",
+    "pattern": "data:image/(png|jpeg|jpg);base64,(.*)"
+  }
+]

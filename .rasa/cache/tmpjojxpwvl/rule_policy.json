@@ -1,0 +1,51 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_contact_info\"}}]": "utter_contact_info",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_contact_info\"}}, {\"prev_action\": {\"action_name\": \"utter_contact_info\"}, \"user\": {\"intent\": \"ask_contact_info\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]": "utter_goodbye",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"affirm\"}}]": "utter_affirm",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"affirm\"}}, {\"prev_action\": {\"action_name\": \"utter_affirm\"}, \"user\": {\"intent\": \"affirm\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"introduce\"}}]": "utter_introduce",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"introduce\"}}, {\"prev_action\": {\"action_name\": \"utter_introduce\"}, \"user\": {\"intent\": \"introduce\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"error_feedback\"}}]": "utter_apology",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"error_feedback\"}}, {\"prev_action\": {\"action_name\": \"utter_apology\"}, \"user\": {\"intent\": \"error_feedback\"}}]": "action_log_error",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"error_feedback\"}}, {\"prev_action\": {\"action_name\": \"utter_apology\"}, \"user\": {\"intent\": \"error_feedback\"}}, {\"prev_action\": {\"action_name\": \"action_log_error\"}, \"user\": {\"intent\": \"error_feedback\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_building_cost\"}}]": "action_calculate_building_cost",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_building_cost\"}}, {\"prev_action\": {\"action_name\": \"action_calculate_building_cost\"}, \"user\": {\"intent\": \"ask_building_cost\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}]": "utter_greet",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"greet\"}}, {\"prev_action\": {\"action_name\": \"utter_greet\"}, \"user\": {\"intent\": \"greet\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thank\"}}]": "utter_you_are_welcome",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thank\"}}, {\"prev_action\": {\"action_name\": \"utter_you_are_welcome\"}, \"user\": {\"intent\": \"thank\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_for_area_calculation\"}}]": "action_calculate_area",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_for_area_calculation\"}}, {\"prev_action\": {\"action_name\": \"action_calculate_area\"}, \"user\": {\"intent\": \"ask_for_area_calculation\"}}]": "utter_ask_for_more_info",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_for_area_calculation\"}}, {\"prev_action\": {\"action_name\": \"action_calculate_area\"}, \"user\": {\"intent\": \"ask_for_area_calculation\"}}, {\"prev_action\": {\"action_name\": \"utter_ask_for_more_info\"}, \"user\": {\"intent\": \"ask_for_area_calculation\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_how_to_use\"}}]": "utter_how_to_use",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_how_to_use\"}}, {\"prev_action\": {\"action_name\": \"utter_how_to_use\"}, \"user\": {\"intent\": \"ask_how_to_use\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"deny\"}}]": "utter_deny",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"deny\"}}, {\"prev_action\": {\"action_name\": \"utter_deny\"}, \"user\": {\"intent\": \"deny\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}]": "action_receive_image",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_receive_image\"}, \"user\": {\"intent\": \"upload_image\"}}]": "action_analyze_image",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_receive_image\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_analyze_image\"}, \"user\": {\"intent\": \"upload_image\"}}]": "utter_image_received",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_receive_image\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_analyze_image\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"utter_image_received\"}, \"user\": {\"intent\": \"upload_image\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_construction_process\"}}]": "utter_construction_process",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"ask_construction_process\"}}, {\"prev_action\": {\"action_name\": \"utter_construction_process\"}, \"user\": {\"intent\": \"ask_construction_process\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "predicting default action with intent session_start",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_receive_image\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_analyze_image\"}, \"user\": {\"intent\": \"upload_image\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"error_feedback\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_receive_image\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_analyze_image\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"utter_image_received\"}, \"user\": {\"intent\": \"upload_image\"}}]",
+      "predicting default action with intent back",
+      "predicting default action with intent restart",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"error_feedback\"}}, {\"prev_action\": {\"action_name\": \"utter_apology\"}, \"user\": {\"intent\": \"error_feedback\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"upload_image\"}}, {\"prev_action\": {\"action_name\": \"action_receive_image\"}, \"user\": {\"intent\": \"upload_image\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"error_feedback\"}}, {\"prev_action\": {\"action_name\": \"utter_apology\"}, \"user\": {\"intent\": \"error_feedback\"}}, {\"prev_action\": {\"action_name\": \"action_log_error\"}, \"user\": {\"intent\": \"error_feedback\"}}]"
+    ]
+  }
+}

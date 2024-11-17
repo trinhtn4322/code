@@ -1,0 +1,385 @@
+version: "3.0"
+
+nlu:
+#Greet
+
+  - intent: TimKiemSanPham
+    examples: |
+      - Tôi muốn tìm sản phẩm [gạch](product_name)
+      - Có loại [thép](product_type) nào giá dưới [2 triệu](price_range)?
+      - Cho tôi xem các [xà gồ](product_type) giá từ [3 triệu](price_range) đến [5 triệu](price_range)
+      - Tôi cần tìm bàn [gỗ tự nhiên](product_name) giá khoảng [2 triệu](price_range)
+      - Tìm giúp tôi các loại [cửa sắt](product_name) giá dưới [3 triệu](price_range)
+      - Bạn có bán [máy lạnh](product_name) nào không?
+      - Tôi muốn mua [bàn làm việc](product_name) giá từ [1 triệu](price_range) đến [2 triệu](price_range)
+      - Có các loại [ghế sofa](product_name) nào dưới [5 triệu](price_range)?
+      - [Bồn cầu](product_name) loại nào giá khoảng [3 triệu](price_range)?
+      - Các loại [xà gồ](product_name) bạn có là gì?
+      - Bạn có các loại [vách ngăn](product_name) nào không?
+      - Sản phẩm [vật liệu xây dựng](product_type) này có giá bao nhiêu?
+
+
+  - intent: ThongTinSanPham
+    examples: |
+      - [Thép loại II](product_name) có kích thước bao nhiêu?
+      - Mặt hàng [gạch](product_name) này giá bao nhiêu?
+      - Sản phẩm [thép loại I](product_name) có màu gì?
+      - Bàn [gỗ tự nhiên](product_name) này có kích thước như thế nào?
+      - [Xà gồ](product_name) có thể chịu tải trọng bao nhiêu?
+      - Giá của [bàn làm việc](product_name) này là bao nhiêu?
+      - Bạn có thể cho tôi biết thông số kỹ thuật của sản phẩm [gạch ceramic](product_name)?
+      - [Máy lạnh](product_name) này công suất bao nhiêu?
+      - Sản phẩm [bàn học sinh](product_name) này có bao nhiêu màu sắc?
+      - Sản phẩm [gạch](product_name) này có thể sử dụng cho những công trình nào?
+      - [Cửa sắt](product_name) này có độ bền bao lâu?
+      - [Vách ngăn](product_name) này có chất liệu gì?
+      - Thông số của [bồn cầu](product_name) này như thế nào?
+
+
+  - intent: greet
+    examples: |
+      - Chào bạn!
+      - Xin chào!
+      - Hi, tôi có thể hỏi bạn điều gì?
+      - Bạn còn đó không?
+      - Alo
+      - Có ai không?
+      - Tôi cần hổ trợ
+      - Giúp tôi với
+      - Tôi cần hổ trợ
+      - Lô
+      - Này bạn
+      - Chào buổi sáng!
+      - Chào buổi tối!
+      - Chào anh/chị
+      - Chào em
+      - Xin chào, bạn có thể giúp tôi không?
+      - Chào, tôi đang tìm kiếm thông tin
+      - Mình có thể hỏi một số câu hỏi không?
+      - Bạn có thể hỗ trợ tôi không?
+      - Chào, mình cần trợ giúp.
+# Introduction
+  - intent: bot_introduction
+    examples: |
+      - Bạn là ai?
+      - Bạn hãy tự giới thiệu về bản thân đi
+      - Bạn là chat bot của ai?
+      - Ai đã tạo ra bạn?
+      - Bạn thuộc sở hữu của ai?
+      - Bạn làm về lĩnh vực gì?
+      - Bạn có thể cho tôi biết bạn là ai không?
+      - Bạn có thể giới thiệu bản thân không?
+      - Bạn là một chatbot, đúng không?
+      - Bạn có phải là trợ lý ảo không?
+      - Bạn có thể kể về mình không?
+      - Bạn được tạo ra để làm gì?
+      - Tại sao bạn lại tồn tại?
+      - Bạn làm việc cho ai?
+      - Bạn là hệ thống gì?
+
+  - intent: company_introduction
+    examples: |
+      - Công ty của bạn làm gì?
+      - Bạn làm trong ngành nào?
+      - Công ty của bạn chuyên về lĩnh vực gì?
+      - Bạn có thể nói về công ty bạn không?
+      - Công ty của bạn có phải công ty xây dựng không?
+      - Công ty này cung cấp dịch vụ gì?
+      - Bạn có thể giới thiệu về công ty của mình không?
+      - Bạn làm việc cho công ty nào?
+      - Công ty của bạn có đội ngũ như thế nào?
+      - Công ty của bạn đã hoạt động bao lâu rồi?
+      - Công ty này có uy tín không?
+      - Công ty của bạn có những dự án nào?
+      - Công ty này có chuyên làm nhà ở không?
+      - Bạn có thể nói một chút về công ty không?
+      - Công ty của bạn có dự án nổi bật nào không?
+      - Công ty này có làm công trình lớn không?
+      - Bạn có thể nói về các dịch vụ công ty cung cấp?
+      - Công ty này làm các công trình như thế nào?
+      - Bạn có thể giới thiệu về các công trình công ty đã làm không?
+      - Công ty của bạn có các dịch vụ tư vấn không?
+
+
+  - intent: bot_capabilities
+    examples: |
+      - Bạn có thể làm gì?
+      - Bạn sử dụng công nghệ gì?
+      - Bạn có phải AI không?
+      - Bạn có phải con người không?
+      - Công dụng của bạn là gì?
+      - Bạn sẽ làm gì được cho tôi?
+      - Bạn có thể giải thích chức năng của bạn không?
+      - Bạn có thể cho tôi biết bạn có thể làm gì không?
+      - Bạn có thể nói về nhiệm vụ của mình không?
+      - Bạn có thể giúp gì cho tôi?
+      - Bạn làm gì cho tôi?
+      - Bạn có thể giúp tôi làm gì?
+      - Bạn có thể hỗ trợ tôi như thế nào?
+      - Bạn có thể làm việc gì cho tôi không?
+      - Bạn có thể làm việc nào ngoài hỗ trợ không?
+      - Bạn có thể giúp tôi giải quyết vấn đề gì?
+      - Bạn có thể giải đáp thắc mắc cho tôi không?
+      - Bạn có thể cung cấp thông tin gì cho tôi?
+      - Bạn có thể trợ giúp tôi trong công việc gì không?
+      - Bạn có thể làm gì trong ngành xây dựng?
+
+  - intent: bot_how_to_use
+    examples: |
+      - Cách gửi ảnh là gì?
+      - Làm sao để gửi ảnh?
+      - Cách sử dụng chatbot như thế nào?
+      - Làm sao để bắt đầu trò chuyện với bạn?
+      - Bạn có thể hướng dẫn tôi sử dụng không?
+      - Làm sao để tương tác với bạn?
+      - Tôi phải làm gì để sử dụng bạn?
+      - Bạn có thể hướng dẫn tôi cách sử dụng không?
+      - Làm sao để gửi tài liệu cho bạn?
+      - Tôi cần làm gì để nhận trợ giúp từ bạn?
+      - Bạn có thể chỉ cho tôi cách bắt đầu không?
+      - Tôi phải làm gì để gửi câu hỏi cho bạn?
+      - Làm sao để sử dụng các tính năng của bạn?
+      - Cách gửi thông tin cho bạn như thế nào?
+      - Bạn có thể giúp tôi với việc sử dụng các tính năng của chatbot không?
+
+  - intent: bot_limitations
+    examples: |
+      - Bạn có hạn chế gì không?
+      - Ngoài tính diện tích ra bạn còn làm được gì khác?
+      - Bạn chỉ tính được diện tích thôi sao?
+      - Bây giờ tôi phải làm sao?
+      - Tôi cần nhiều hơn từ bạn.
+      - Bạn có thể làm được gì ngoài việc tính diện tích?
+      - Bạn có thể làm gì nếu không phải tính toán diện tích?
+      - Bạn có tính toán được các thông số khác ngoài diện tích không?
+      - Có những tính năng nào bạn không thể làm được?
+      - Nếu tôi muốn thêm thông tin ngoài diện tích, bạn có thể giúp không?
+      - Bạn có thể hỗ trợ tôi những gì ngoài việc tính diện tích?
+      - Tôi cần nhiều hơn, bạn có thể làm gì nữa không?
+      - Bạn có thể giải quyết các vấn đề khác ngoài tính diện tích không?
+      - Bạn có giới hạn nào về khả năng tính toán không?
+      - Liệu bạn có thể cung cấp thông tin khác ngoài diện tích?
+
+  # Send Image
+  - intent: send_image
+    examples: |
+      - Tôi muốn gửi hình ảnh bản vẽ.
+      - Đây là hình ảnh của bản vẽ tôi.
+      - Tôi đã tải lên bản vẽ.
+      - Tôi muốn chia sẻ hình ảnh với bạn.
+      - Tôi có 1 hình ảnh.
+      - Tôi gửi ảnh cho bạn rồi bạn tính toán giúp tôi nha.
+      - Tính diện tích bản vẽ này giúp tôi.
+      - Tôi muốn gửi một bản vẽ khác.
+      - Tôi gửi lại ảnh khác được không?
+      - Tôi có một bản vẽ mới muốn gửi.
+      - Bạn nhận được ảnh tôi gửi chưa?
+      - Đây là bản vẽ tôi muốn bạn xử lý.
+      - Bạn có thể nhận hình ảnh không?
+      - Tính toán với hình ảnh này nhé.
+      - Tôi muốn chia sẻ một bản vẽ khác với bạn.
+      - Tôi cần gửi hình ảnh để bạn phân tích.
+      - Bạn có thể giúp tôi với bản vẽ này không?
+      - Tôi đã tải xong hình ảnh, bạn có thể xử lý được không?
+
+
+  - intent: calculate_price
+    examples: |
+      - Bạn có thể tính giá cho tôi không?
+      - Tôi muốn biết giá cho bản vẽ này.
+      - Xin cho tôi biết giá dự kiến.
+      - Bạn có thể báo giá không?
+      - Tính giá giúp tôi nhé.
+      - Bạn có thể đưa ra báo giá không?
+      - Giá của bản vẽ này là bao nhiêu?
+      - Bạn có thể cung cấp giá cho dịch vụ này không?
+      - Tôi cần biết chi phí cho bản vẽ này.
+      - Bạn có thể ước tính giá cho tôi không?
+      - Bạn có thể báo giá cho bản vẽ này không?
+      - Tính toán giá cho bản vẽ giúp tôi.
+      - Mất bao lâu để có giá cho bản vẽ này?
+      - Bạn có thể cung cấp mức giá dựa trên bản vẽ này không?
+      - Báo giá cho tôi được không?
+      - Chi phí dịch vụ của bạn là bao nhiêu?
+
+
+  - intent: bot_recommendations
+    examples: |
+      - Tình trạng của bản vẽ như thế nào?
+      - Bản vẽ đang được xử lý không?
+      - Có thông tin gì về bản vẽ không?
+      - Bạn có đề xuất gì cho bản vẽ không?
+      - Bạn có lời khuyên gì về bản vẽ này không?
+      - Bản vẽ có vấn đề gì không?
+      - Có điểm gì cần cải thiện trong bản vẽ này không?
+      - Bạn có nhận xét gì về bản vẽ không?
+      - Bản vẽ này có phù hợp không?
+      - Bạn có gợi ý nào cho bản vẽ này không?
+      - Có cách nào tối ưu hóa bản vẽ không?
+      - Bạn có thể đưa ra lời khuyên gì cho bản vẽ này không?
+      - Bạn có thể nhận xét về chất lượng bản vẽ không?
+      - Bản vẽ này có thể cải tiến thế nào?
+      - Bạn có nhận thấy điều gì cần thay đổi trong bản vẽ không?
+
+ 
+
+  - intent: detect_encoded_string
+    examples: |
+      - AgACAgUAAxkBAAP_ZysgqQa8t84ncRpn9iP3bJb52zYAAse-MRs8gFhV4hysWwTxiXUBAAMCAAN3AAM2BA
+      - BQACAgUAAxkBAAOEX_djsfkdjsnre345mBGFgfDFGdfQW
+      - YDFHjdfkqBCz_zkdsfjdkfjer_3409Hdf
+      - aHfX72lK9xJjGdZpK3nQ4GdL5R8F2wX9uN
+      - W3pC9kVt0iQ7mJj8y0gFbN6Lp5Xy1zK4M
+      - 2F9y1m9rT84KjXzS7oN0uY1pQmL5LgD2r
+      - B3J9eRt8f0W9iAqT2nL5E6pV1N8lU7nD4J
+      - Y2gF8hJ3zWp4N5K1xLqV9U2sP7yO1ZtG6m
+      - N3dK5mG0Jp2T9Qw4Z8s0yF8RkX6lVn7O
+      - J1A8rL7oM2pT4K3fQ9gX5Z6sY0dR1N7V9h
+      - K9QpX4j0ZyL8oV5mD3R7wF2T1N9gY6P3k
+      - X7N4V3g9T5L1oY8K0pR6J2f8QmZ9W3dD0
+      - R1T8pL2V5o0Xq6J7mD9YgK3fN4Z9P2wN8
+      - P2W1X5mK8Q9g3V0Z7L9yR0f4J6N1T2pY3
+      - T8F1mQ9V0L5K3J7X2p6ZyR4N0wY9g7oD0
+      - Z2W9Q1N7T0m6X5L3yP4J9R0K8V1g9f3D0
+      - V8R3Y0g1Q9L2X5pF7T9J0mK4N3wZ1D8o3
+      - L1N9Q5T2fX7m8R4pK3Y0V9J6g3Z2D1w7
+ # basic
+  - intent: goodbye
+    examples: |
+      - Tạm biệt!
+      - Hẹn gặp lại!
+      - Chúc bạn một ngày tốt lành!
+      - Xin chào tạm biệt!
+      - Chúc bạn mọi điều tốt đẹp!
+      - Hẹn gặp lại lần sau!
+      - Cảm ơn bạn, tạm biệt!
+      - Chúc bạn có một ngày tuyệt vời!
+      - Tạm biệt và chúc may mắn!
+      - Hẹn gặp lại vào lần sau!
+      - Tạm biệt, hẹn gặp lại!
+      - Chúc bạn thành công!
+      - Cảm ơn và tạm biệt!
+      - Tạm biệt nhé!
+      - Chúc bạn ngày mới vui vẻ!
+      - Hẹn gặp lại bạn sớm!
+      - Chúc bạn luôn vui vẻ!
+      - Chúc bạn sức khỏe!
+      - Mong gặp lại bạn trong lần sau!
+      - Tạm biệt, hẹn gặp lại sớm!
+
+  - intent: thanks
+    examples: |
+      - Cảm ơn bạn!
+      - Tôi cảm ơn vì sự giúp đỡ của bạn.
+      - Cảm ơn bạn đã hỗ trợ!
+      - Cảm ơn rất nhiều!
+      - Cảm ơn bạn đã dành thời gian giúp đỡ.
+      - Tôi rất biết ơn bạn.
+      - Cảm ơn sự hỗ trợ của bạn.
+      - Cảm ơn bạn đã giải đáp thắc mắc.
+      - Tôi rất cảm kích sự giúp đỡ của bạn.
+      - Cảm ơn vì những gì bạn đã làm.
+      - Cảm ơn bạn đã chỉ dẫn!
+      - Tôi rất trân trọng sự giúp đỡ của bạn.
+      - Cảm ơn vì đã hỗ trợ tôi!
+      - Cảm ơn bạn đã làm sáng tỏ vấn đề!
+      - Xin cảm ơn bạn rất nhiều!
+      - Tôi thật sự cảm ơn bạn.
+      - Cảm ơn bạn vì sự trợ giúp!
+      - Cảm ơn bạn vì đã giải quyết vấn đề.
+      - Cảm ơn bạn, tôi rất trân trọng điều đó!
+      - Tôi cảm thấy rất biết ơn bạn.
+
+  - intent: afirm
+    examples: |
+      - Được rồi
+      - Ok
+      - Tôi hiểu rồi
+      - Chắc chắn rồi
+      - Vâng
+      - Tôi đồng ý
+      - Đúng rồi
+      - Tốt rồi
+      - Ừ, tôi hiểu
+      - Đúng vậy
+      - Đã rõ
+      - Tôi chấp nhận
+      - Ừ, được
+      - Tôi đã hiểu
+      - Vâng, tôi đồng ý
+      - Ok, tôi sẽ làm vậy
+      - Tôi hiểu vấn đề rồi
+      - Chính xác
+      - Tôi đã sẵn sàng
+      - Ok, cảm ơn
+
+  - intent: feed_back
+    examples: |
+      - Tôi muốn cho bạn biết về trải nghiệm của mình.
+      - Tôi có phản hồi về dịch vụ.
+      - Tôi muốn góp ý cho dịch vụ.
+      - Làm sao để đánh giá bạn?
+      - Tôi muốn chia sẻ cảm nhận của mình.
+      - Bạn có thể nhận phản hồi từ tôi không?
+      - Tôi có một số góp ý cho dịch vụ của bạn.
+      - Tôi muốn đưa ra ý kiến về dịch vụ.
+      - Tôi muốn phản hồi về trải nghiệm sử dụng.
+      - Bạn có nhận được đánh giá của tôi không?
+      - Tôi có một số nhận xét về dịch vụ của bạn.
+      - Tôi muốn phản hồi về trải nghiệm của mình.
+      - Tôi muốn cung cấp một số ý kiến cho dịch vụ.
+      - Làm sao để gửi phản hồi về dịch vụ?
+      - Tôi có một số điều muốn chia sẻ với bạn.
+      - Bạn có thể lắng nghe phản hồi từ tôi không?
+      - Tôi muốn cho bạn biết một số ý kiến của tôi.
+      - Cách nào để bạn nhận được ý kiến của tôi?
+      - Tôi muốn đánh giá dịch vụ của bạn.
+      - Bạn có thể nhận được lời góp ý của tôi không?
+
+  - intent: contact
+    examples: |
+      - Làm thế nào để tôi có thể liên hệ với bạn?
+      - Tôi cần thông tin liên hệ của bạn.
+      - Bạn có thể cho tôi biết cách liên lạc không?
+      - Tôi muốn liên hệ công ty.
+      - Làm sao để tôi có thể gọi cho bạn?
+      - Bạn có số điện thoại không?
+      - Tôi cần gửi email cho bạn, có thể cung cấp địa chỉ không?
+      - Làm thế nào để tôi liên lạc với bộ phận hỗ trợ?
+      - Bạn có thể chia sẻ thông tin liên lạc của công ty không?
+      - Tôi cần biết cách liên lạc với nhân viên của bạn.
+      - Liên hệ với bạn qua đâu là tốt nhất?
+      - Có cách nào để tôi trò chuyện với bạn qua điện thoại không?
+      - Địa chỉ công ty của bạn là gì?
+      - Tôi có thể gửi thư đến đâu?
+      - Cách tốt nhất để liên hệ với bạn là gì?
+      - Bạn có tài khoản mạng xã hội nào để liên lạc không?
+      - Làm sao để tôi có thể liên hệ với phòng chăm sóc khách hàng?
+      - Bạn có chat trực tuyến không?
+      - Liên hệ qua email như thế nào?
+      - Tôi muốn biết địa chỉ văn phòng của bạn.
+
+  - intent: deny
+    examples: |
+      - Không, cảm ơn.
+      - Tôi không cần thêm thông tin.
+      - Không có gì thêm.
+      - Tôi không muốn điều đó.
+      - Tôi không cần giúp đỡ nữa.
+      - Cảm ơn nhưng không cần.
+      - Không phải bây giờ.
+      - Tôi sẽ tự làm được.
+      - Tôi không quan tâm đến việc đó.
+      - Tôi không cần nữa.
+      - Không cần đâu.
+      - Tôi không đồng ý.
+      - Không có gì cần làm nữa.
+      - Tôi từ chối.
+      - Không sao đâu.
+      - Để lần sau đi.
+      - Tôi đã đủ thông tin rồi.
+      - Không có gì cần thay đổi.
+      - Không cần sự giúp đỡ của bạn.
+      - Tôi không muốn tham gia.
+
+
