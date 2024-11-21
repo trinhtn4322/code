@@ -6,7 +6,7 @@ intents:
   - bot_introduction
   - company_introduction
   - bot_capabilities
-  - bot_how_to_useuse
+  - bot_how_to_use
   - bot_limitations
   - send_image
   - calculate_price
@@ -19,7 +19,7 @@ intents:
   - contact
   - TimKiemSanPham
   - ThongTinSanPham
-
+  - feed_back
 entities:
   - area
   - length
@@ -54,6 +54,12 @@ slots:
     mappings:
       - type: from_entity
         entity: product_name
+  modified_message:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: modified_message
   product_type:
     type: text
     influence_conversation: false
@@ -73,7 +79,7 @@ actions:
   - utter_bot_introduction
   - utter_company_introduction
   - utter_bot_capabilities
-  - utter_bot_how_to_useuse
+  - utter_bot_how_to_use
   - utter_bot_limitations
   - utter_send_image
   - utter_bot_recommendations

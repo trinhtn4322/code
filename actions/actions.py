@@ -1,11 +1,19 @@
 
 from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
-import requests
 from OCR import ocr
 from Layoutlm import layout
+from calculator import update_excel_and_calculate
+from rasa_sdk.events import FollowupAction
+import re
+import requests
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import UserUtteranceReverted
+from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
 class ActionProcessImage(Action):
     def name(self) -> Text:
@@ -53,7 +61,15 @@ class ActionProcessImage(Action):
                         else:
                             dispatcher.utter_message(text="Ảnh đã được trích xuất, Đang phân tích...")
 
-                            width, length = layout(n)
+                            x, y = layout(n)
+                            if x<y:
+                                width=x
+                                length=y
+                            else:
+                                width = y
+                                length = x
+                            width = int(width / 100) / 10
+                            length = int(length / 100) / 10
 
                             area = width * length
                             dispatcher.utter_message(text=f"Chiều dài: {length}m, Chiều rộng: {width}m, Diện tích: {area}m²")
@@ -80,6 +96,7 @@ class ActionProcessImage(Action):
 
 
 
+
 class ActionCalculatePrice(Action):
     def name(self) -> Text:
         return "calculate_price"
@@ -88,20 +105,46 @@ class ActionCalculatePrice(Action):
         width = tracker.get_slot("width")
         length = tracker.get_slot("length")
         area = tracker.get_slot("area")
-        thép=area*1.5
-        gạch=area*1.6
-        xi_măng=area*2
-        đá=area*1.2
-        if width and length and area:
-            dispatcher.utter_message(
-                text=f"Với các thông số kích thước: {length}m x chiều rộng {width}m tôi có thể ước tính giá tiền của công trình này nhu sau: \n"
-                     f"Thép: {thép} VND.\n"
-                     f"Gạch: {gạch} VND.\n"
-                     f"Xi măng: {xi_măng} VND.\n"
-                     f"Đá: {đá} VND.\n"
-                     f"Tổng cộng:{thép+gạch+xi_măng+đá} VND. Đây chỉ là ước tính sơ bộ, bạn có thể liên hệ với chúng tôi qua số điện thoại 012345678 để được tư vấn kỹ hơn. Ngoài ra bạn cũng có thể tham khảo các loại chất liệu khác nhau cho công trình của bạn.")
+        print(width,length)
+        if width and length:
+            width = width.replace("m", "")
+            length = length.replace("m", "")
+            print(width, length)
+            price=update_excel_and_calculate(width, length)
+            dispatcher.utter_message(text=f"Dưới đây là tính toán sơ bộ cho dự án của bạn.\n")
+            for i in range(len(price)):
+                stt=i+1
+                text=price[i]
+                dispatcher.utter_message(text=f"{stt}. {text}\n")
+
         else:
-            dispatcher.utter_message(text="Không tìm thấy thông tin lưu trữ.")
+            user_message = tracker.latest_message.get("text")
+            length = None
+            width = None
+
+            # Tìm chiều dài
+            length_match = re.search(r"chiều dài\s*([0-9]+)\s*m?", user_message, re.IGNORECASE)
+            if length_match:
+                length = length_match.group(1)
+
+            # Tìm chiều rộng
+            width_match = re.search(r"chiều rộng\s*([0-9]+)\s*m?", user_message, re.IGNORECASE)
+            if width_match:
+                width = width_match.group(1)
+
+            # Xử lý logic nếu tìm thấy chiều dài và chiều rộng
+            if length and width:
+                dispatcher.utter_message(text=f"Chiều dài: {length}m, Chiều rộng: {width}m. Đang tính giá...")
+                price = update_excel_and_calculate(length, width)
+                print(width, length)
+
+                dispatcher.utter_message(text=f"Dưới đây là tính toán sơ bộ cho dự án của bạn.\n")
+                for i in range(len(price)):
+                    stt = i + 1
+                    text = price[i]
+                    dispatcher.utter_message(text=f"{stt}. {text}\n")
+            else:
+                dispatcher.utter_message(text="Không tìm thấy thông tin lưu trữ. Bạn có thể gửi tôi hình ảnh bảng vẽ hoặc chiều dài chiều rộng(đơn vị m) của bản dự án, tôi sẽ giúp bạn tính toán chi phí.s")
 
         return []
 
@@ -109,10 +152,7 @@ class ActionCalculatePrice(Action):
 # actions.py
 # actions.py
 
-import requests
-from rasa_sdk import Action
-from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import UserUtteranceReverted
+
 
 
 class ActionProcessFallback(Action):
@@ -121,8 +161,18 @@ class ActionProcessFallback(Action):
 
     def run(self, dispatcher, tracker, domain):
         # Lấy tin nhắn cuối cùng của người dùng
-        user_message = tracker.latest_message.get('text')
-
+        modified_message = tracker.get_slot("modified_message")
+        print(modified_message)
+        if modified_message:
+            user_message=modified_message
+            prompt = (
+                "Hãy xác định xem khách hàng hỏi gì. Nếu về sản phẩm thì tất cả sản phẩm khách hàng đang hỏi hiện trong kho đã hết, hãy xin lỗi khách hàng thật ngắn gọn. Còn nếu khách hàng hỏi cái khác cũng hãy trả lời ngắn gọn thôi. ")
+        else:
+            prompt = (
+                "Bạn là một kỹ sư xây dựng. Hãy trả lời ngắn gọn câu hỏi sau đây của user ")
+            user_message = tracker.latest_message.get('text')
+        print(prompt)
+        print(user_message)
         # Kiểm tra nếu không có tin nhắn để gửi đến Gemini
         if not user_message:
             dispatcher.utter_message("Không thể xử lý yêu cầu.")
@@ -131,9 +181,8 @@ class ActionProcessFallback(Action):
         # API URL và Key cho Gemini
         GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAU3sW3KSfsezm4lvO24AIcuePgLe529rE"
         headers = {"Content-Type": "application/json"}
-        prompt = (
-            "Bạn là một kỹ sư xây dựng. Hãy trả lời ngắn gọn câu hỏi sau đây của user "
-        )
+
+
         data = {
             "contents": [
                 {
@@ -148,7 +197,7 @@ class ActionProcessFallback(Action):
             # Gửi request đến API Gemini
             response = requests.post(GEMINI_API_URL, headers=headers, json=data)
             response_data = response.json()
-
+            print(response)
             # Lấy nội dung phản hồi từ Gemini
             gemini_reply = response_data.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text")
 
@@ -168,19 +217,9 @@ class ActionProcessFallback(Action):
         return [UserUtteranceReverted()]
 
 
-from typing import Any, Text, Dict, List
-from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
 
-PRODUCTS = [
-    {"name": "Gạch", "type": "gạch", "price": 2000000, "size": "120x60cm"},
-    {"name": "Thép loại I", "type": "thép", "price": 1500000, "size": "N/A"},
-    {"name": "Xà gồ gỗ", "type": "xà gồ", "price": 5000000, "size": "200x100x50cm"},
-    {"name": "Thép loại II", "type": "thép", "price": 3000000, "size": "150x70x30cm"},
-]
 
-from rasa_sdk import Action
-from rasa_sdk.events import SlotSet
+
 
 # Giả sử bạn có dữ liệu sản phẩm như sau:
 product_data = {
@@ -266,6 +305,7 @@ product_data = {
 }
 
 
+
 class ActionSearchProduct(Action):
     def name(self) -> str:
         return "action_search_product"
@@ -275,65 +315,114 @@ class ActionSearchProduct(Action):
         product_name = tracker.get_slot("product_name")
         product_type = tracker.get_slot("product_type")
         price_range = tracker.get_slot("price_range")
+        print(product_name)
+        print(product_type)
+        print(price_range)
 
-        # Xử lý tìm kiếm theo các tiêu chí: product_name, product_type, và price_range
-        results = []
+        # Khởi tạo vectorizer
 
-        # Tìm kiếm sản phẩm theo tên
-        if product_name:
-            if product_name in product_data:
-                product = product_data[product_name]
-                if price_range:
-                    print("ok2",price_range)
-
-                    # min_price, max_price = self.parse_price_range(price_range)
-                    # price = self.extract_price(product["price"])
-                    # if min_price <= price <= max_price:
-                    results.append(
-                            f"Sản phẩm {product_name}: {product['type']}, {product['price']}, {product['details']}")
-                else:
-                    print("ok1")
-
-                    results.append(
-                        f"Sản phẩm {product_name}: {product['type']}, {product['price']}, {product['details']}")
-
-        # Tìm kiếm sản phẩm theo loại (product_type) và price_range
-        elif product_type:
+        if price_range:
+            data={}
             for name, product in product_data.items():
-                if product_type in product["type"]:
-                    if price_range:
-                        min_price, max_price = self.parse_price_range(price_range)
-                        price = self.extract_price(product["price"])
-                        if min_price <= price <= max_price:
-                            results.append(
-                                f"Sản phẩm {name}: {product['type']}, {product['price']}, {product['details']}")
-                    else:
-                        results.append(f"Sản phẩm {name}: {product['type']}, {product['price']}, {product['details']}")
+                min_price, max_price = self.parse_price_range(price_range)
+                price = self.extract_price(product["price"])
+                print(min_price,price,max_price)
+                if min_price <= price <= max_price:
+                    data[name] = product
+            print(data)
+            if data != {}:
+                result=self.type_name(product_name, product_type, data)
+                print("oke1")
+                if result:
+                    dispatcher.utter_message(text="\n".join(result))
+                    print("oke2")
+                else:
+                    print("oke3")
 
-        # Trả lời người dùng
-        print("ok", results)
+                    result=[]
+                    for name, product in data.items():
+                        result.append(
+                            f"Sản phẩm {name}: {product['type']}, {product['price']}, {product['details']}"
+                        )
+                    dispatcher.utter_message(text="\n".join(result))
+                    print("oke4")
+            else:
+                user_message = tracker.latest_message['text']
+                modified_message =  user_message
+                return [SlotSet("modified_message", modified_message), FollowupAction("process_fallback")]
 
-        if results:
-            dispatcher.utter_message(text="\n".join(results))
         else:
-            dispatcher.utter_message(text=f"Không tìm thấy sản phẩm phù hợp với yêu cầu của bạn.{product_name}")
+            user_message = tracker.latest_message['text']
+            modified_message=+user_message
+            return [SlotSet("modified_message", modified_message),FollowupAction("process_fallback")]
 
-        return []
+        # else:
+        #     if price_range:
+        #         dispatcher.utter_message(text=f"Không tìm thấy sản phẩm {product_type} {product_name} có giá {price_range}.")
+        #     elif product_name or product_type:
+        #         dispatcher.utter_message(text=f"Không tìm thấy sản phẩm {product_type} {product_name}.")
+        #     else:
+        #         dispatcher.utter_message(text="Vui lòng cung cấp tên sản phẩm hoặc loại sản phẩm.")
+
+        return [SlotSet("product_name", None),SlotSet("modified_message", None), SlotSet("product_type", None), SlotSet("price_range", None)]
 
     def parse_price_range(self, price_range):
         """Chuyển đổi giá trị price_range thành giá trị min và max"""
         # Giả sử price_range có dạng "2 triệu" hoặc "1 triệu đến 3 triệu"
         price_range = price_range.lower()
         prices = price_range.split(" đến ")
+        # prices = price_range.split(" từ ")
+        # prices = price_range.split(" - ")
 
         min_price = self.extract_price(prices[0])
         max_price = self.extract_price(prices[-1]) if len(prices) > 1 else min_price
 
         return min_price, max_price
+    def type_name(self,product_name,product_type,product_data):
 
+        vectorizer = TfidfVectorizer()
+
+        # Lấy tất cả các mô tả sản phẩm từ product_data
+        product_descriptions = [product["details"] for product in product_data.values()]
+
+        # Tạo ma trận TF-IDF từ các mô tả sản phẩm
+        tfidf_matrix = vectorizer.fit_transform(product_descriptions)
+
+        # Tìm kiếm sản phẩm dựa trên tên hoặc loại
+        if product_name or product_type:
+            # Mảng chứa các tên sản phẩm để tìm kiếm
+            search_queries = []
+            if product_name:
+                search_queries.append(product_name)
+            if product_type:
+                search_queries.append(product_type)
+
+            # Tạo ma trận TF-IDF cho các câu truy vấn tìm kiếm
+            query_matrix = vectorizer.transform(search_queries)
+
+            # Tính độ tương đồng cosine giữa câu truy vấn và các mô tả sản phẩm
+            similarities = cosine_similarity(query_matrix, tfidf_matrix)
+            print(similarities)
+            # Tìm kiếm sản phẩm có độ tương đồng cao nhất
+            best_match_index = np.argmax(similarities, axis=1)
+            print(best_match_index)
+            # Trả về kết quả tìm kiếm
+            results = []
+            for idx in best_match_index:
+                product = list(product_data.values())[idx]
+                results.append(
+                    f"Sản phẩm {list(product_data.keys())[idx]}: {product['type']}, {product['price']}, {product['details']}"
+                )
+            return results
+            # Hiển thị kết quả
+            # if results:
+            #     dispatcher.utter_message(text="\n".join(results))
+            # else:
+            #     dispatcher.utter_message(text="Không tìm thấy sản phẩm phù hợp.")
     def extract_price(self, price_str):
         """Chuyển đổi giá thành giá trị số"""
         # Loại bỏ các ký tự không phải là số và các từ như "triệu", "VND", ...
+        price_str = price_str.lower()
         price_str = price_str.replace("triệu", "").replace("vnd", "").replace(" ", "").strip()
 
         try:
