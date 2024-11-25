@@ -26,21 +26,27 @@ class ActionProcessImage(Action):
 
         if text:
             try:
+                if len(text) == 15:
+                    url = "http://57.155.0.174:5000/update"
+                    img_url= "http://57.155.0.174:5000/"
+                else:
+                    url="https://api.telegram.org/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI"
+                    img_url="https://api.telegram.org/file/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI"
                 # Giả sử `file_id` được lưu trữ trực tiếp trong `text`
                 file_id = text
                 print('ok1')
                 # Gọi API Telegram để lấy thông tin file
                 response = requests.get(
-                    f"https://api.telegram.org/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI/getFile?file_id={file_id}"
+                    f"{url}/getFile?file_id={file_id}"
                 )
                 print('ok2')
                 file_info = response.json()
 
                 # Kiểm tra phản hồi từ API Telegram
-                print('ok3')
+                print('ok3',file_info)
                 if file_info.get('ok'):
                     file_path = file_info['result']['file_path']
-                    image_url = f"https://api.telegram.org/file/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI/{file_path}"
+                    image_url = f"{url}/{file_path}"
 
                     # Tải ảnh về hoặc thông báo thành công
                     dispatcher.utter_message(text="Đã nhận được ảnh! Cảm ơn bạn đã gửi.")
@@ -80,12 +86,12 @@ class ActionProcessImage(Action):
                             ]
 
                     else:
-                        dispatcher.utter_message(text="Không thể tải ảnh về từ server Telegram.")
+                        dispatcher.utter_message(text="Không thể tải ảnh về từ server.")
 
                     # Trả về sự kiện thành công
                     return []
                 else:
-                    dispatcher.utter_message(text="Không thể lấy ảnh từ Telegram. Vui lòng thử lại.")
+                    dispatcher.utter_message(text="Không thể lấy ảnh. Vui lòng thử lại.")
             except Exception as e:
                 dispatcher.utter_message(text=f"Đã xảy ra lỗi khi xử lý ảnh: {e}")
         else:
@@ -111,7 +117,7 @@ class ActionCalculatePrice(Action):
             length = length.replace("m", "")
             print(width, length)
             price=update_excel_and_calculate(width, length)
-            dispatcher.utter_message(text=f"Dưới đây là tính toán sơ bộ cho dự án của bạn.\n")
+            dispatcher.utter_message(text=f"Dưới đây là tính toán sơ bộ cho dự án của bạn bao gồm Chiều dài: {length}m, Chiều rộng: {width}m\n")
             for i in range(len(price)):
                 stt=i+1
                 text=price[i]

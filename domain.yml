@@ -102,7 +102,7 @@ responses:
     - text: "Xin lỗi, không tìm thấy sản phẩm phù hợp."
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn?"
-    - text: "Chào bạn, tôi là chatbot của TrìnhDepTrai"
+    - text: "Chào bạn, tôi là chatbot của Trung Lâm Company"
     - text: "Xin chào! Bạn cần giúp gì hôm nay?"
     - text: "Chào bạn, tôi ở đây để hỗ trợ bạn."
     - text: "Chào bạn! Tôi có thể làm gì giúp bạn?"
@@ -114,27 +114,27 @@ responses:
 
   utter_bot_introduction:
     - text: "Tôi là chatbot trợ giúp bạn về các vấn đề liên quan đến xây dựng và tính toán diện tích từ bản vẽ."
-    - text: "Tôi là chatbot được TrìnhDepTrai tạo ra, tôi có thể giúp bạn đọc bản vẽ xây dựng. Bạn có cần tôi giúp không?"
+    - text: "Tôi là chatbot được Trung Lâm Company tạo ra, tôi có thể giúp bạn đọc bản vẽ xây dựng. Bạn có cần tôi giúp không?"
     - text: "Tôi là một trợ lý ảo giúp bạn tính diện tích từ bản vẽ và cung cấp thông tin về dịch vụ của công ty."
     - text: "Tôi là chatbot hỗ trợ tính toán diện tích bản vẽ xây dựng và giải đáp thắc mắc về các dịch vụ của công ty."
     - text: "Chào bạn, tôi có thể giúp bạn xử lý bản vẽ xây dựng. Bạn cần tôi làm gì?"
     - text: "Tôi có thể tính toán diện tích từ bản vẽ và hỗ trợ bạn về các vấn đề liên quan đến xây dựng."
     - text: "Tôi là trợ lý ảo giúp bạn giải đáp các câu hỏi về bản vẽ xây dựng và dịch vụ của công ty."
-    - text: "Tôi là một công cụ hỗ trợ cho công ty TrìnhDepTrai, giúp bạn giải quyết các bài toán liên quan đến xây dựng."
+    - text: "Tôi là một công cụ hỗ trợ cho công ty Trung Lâm Company, giúp bạn giải quyết các bài toán liên quan đến xây dựng."
     - text: "Tôi có thể giúp bạn tính toán diện tích từ các bản vẽ xây dựng và cung cấp các dịch vụ liên quan."
-    - text: "Tôi là chatbot được TrìnhDepTrai phát triển, có thể trợ giúp bạn trong việc đọc và tính toán diện tích bản vẽ."
+    - text: "Tôi là chatbot được Trung Lâm Company phát triển, có thể trợ giúp bạn trong việc đọc và tính toán diện tích bản vẽ."
 
   utter_company_introduction:
     - text: "Chúng tôi là một công ty chuyên về dịch vụ xây dựng và tư vấn thiết kế."
     - text: "Tôi là chatbot thuộc sở hữu của công ty TL. Bạn có muốn tôi giúp gì không?"
     - text: "Công ty chúng tôi chuyên cung cấp dịch vụ xây dựng và các giải pháp thiết kế công trình."
-    - text: "TrìnhDepTrai là công ty chuyên về xây dựng và tư vấn thiết kế. Chúng tôi luôn sẵn sàng hỗ trợ bạn."
+    - text: "Trung Lâm Company là công ty chuyên về xây dựng và tư vấn thiết kế. Chúng tôi luôn sẵn sàng hỗ trợ bạn."
     - text: "Công ty chúng tôi cung cấp các dịch vụ liên quan đến xây dựng và tư vấn thiết kế cho các dự án lớn."
     - text: "Chúng tôi cung cấp các dịch vụ xây dựng chất lượng cao và giải pháp thiết kế sáng tạo."
-    - text: "TrìnhDepTrai là công ty chuyên nghiệp trong lĩnh vực xây dựng và tư vấn thiết kế."
+    - text: "Trung Lâm Company là công ty chuyên nghiệp trong lĩnh vực xây dựng và tư vấn thiết kế."
     - text: "Chúng tôi luôn cam kết mang lại các dịch vụ xây dựng tốt nhất cho khách hàng."
     - text: "Công ty của chúng tôi chuyên cung cấp dịch vụ xây dựng và tư vấn thiết kế cho các dự án dân dụng và công nghiệp."
-    - text: "TrìnhDepTrai là công ty nổi bật trong lĩnh vực xây dựng, chuyên cung cấp các giải pháp và dịch vụ xây dựng chuyên nghiệp."
+    - text: "Trung Lâm Company là công ty nổi bật trong lĩnh vực xây dựng, chuyên cung cấp các giải pháp và dịch vụ xây dựng chuyên nghiệp."
 
   utter_bot_capabilities:
     - text: "Tôi có thể giúp bạn tính toán diện tích từ bản vẽ, đưa ra thông tin về các sản phẩm và dịch vụ của công ty."
