@@ -28,7 +28,7 @@ class ActionProcessImage(Action):
             try:
                 if len(text) == 15:
                     url = "http://57.155.0.174:5000/update"
-                    img_url= "http://57.155.0.174:5000/"
+                    img_url= "http://57.155.0.174:5000"
                 else:
                     url="https://api.telegram.org/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI"
                     img_url="https://api.telegram.org/file/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI"
@@ -46,7 +46,7 @@ class ActionProcessImage(Action):
                 print('ok3',file_info)
                 if file_info.get('ok'):
                     file_path = file_info['result']['file_path']
-                    image_url = f"{url}/{file_path}"
+                    image_url = f"{img_url}/{file_path}"
 
                     # Tải ảnh về hoặc thông báo thành công
                     dispatcher.utter_message(text="Đã nhận được ảnh! Cảm ơn bạn đã gửi.")
