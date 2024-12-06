@@ -1,150 +1,150 @@
-version: "3.0"
+version: "3.1"
 
 stories:
   # Basic Greeting and Bot Introduction
   - story: User greets and bot introduces itself
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
 
-  - story: User greets, asks about company, and bot introduces itself
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: bot_introduction
-      - action: utter_bot_introduction
+  # - story: User greets, asks about company, and bot introduces itself
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: bot_introduction
+  #     - action: acc_bot_introduction
 
   # Product Search and Product Information
-  - story: User searches for product and asks for product information
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: ThongTinSanPham
-      - action: action_product_info
+  # - story: User searches for product and asks for product information
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
 
-  - story: User searches for a product, then asks about the company
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: company_introduction
-      - action: utter_company_introduction
+  # - story: User searches for a product, then asks about the company
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
 
   # User asks about bot capabilities
   - story: User asks about bot capabilities
     steps:
       - intent: bot_capabilities
-      - action: utter_bot_capabilities
+      - action: acc_bot_capabilities
 
   - story: User asks about bot limitations
     steps:
       - intent: bot_limitations
-      - action: utter_bot_limitations
+      - action: acc_bot_limitations
 
   - story: User greets, asks about bot capabilities and limitations
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: bot_capabilities
-      - action: utter_bot_capabilities
+      - action: acc_bot_capabilities
       - intent: bot_limitations
-      - action: utter_bot_limitations
+      - action: acc_bot_limitations
 
   # Asking about company information
-  - story: User asks for company information
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
+  # - story: User asks for company information
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
 
   # Price calculation and sending image
   - story: User sends an image and asks for price calculation
     steps:
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
       - intent: calculate_price
       - action: calculate_price
 
-  # Providing feedback and affirming
-  - story: User provides feedback and affirms
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: affirm
-      - action: utter_affirm
+  # # Providing feedback and affirming
+  # - story: User provides feedback and affirms
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: affirm
+  #     - action: acc_affirm
 
   # Goodbye interaction
   - story: User greets and says goodbye
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   - story: User asks for contact and then says goodbye
     steps:
       - intent: contact
-      - action: utter_contact
+      - action: acc_contact
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   # Bot Introduction, then User sends image for price
   - story: Bot introduces itself, and user sends an image for price calculation
     steps:
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
       - intent: calculate_price
       - action: calculate_price
 
   # User wants bot to recommend products
-  - story: User asks for bot recommendations
-    steps:
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
+#  - story: User asks for bot recommendations
+#    steps:
+#      - intent: bot_recommendations
+#      - action: acc_bot_recommendations
 
   # Multiple greetings and goodbye
   - story: User greets multiple times and says goodbye
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   # Product search with feedback
-  - story: User searches for a product and provides feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User searches for a product and provides feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # Bot introduction and user denies
   - story: User denies after getting bot introduction
     steps:
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
       - intent: deny
-      - action: utter_deny
+      - action: acc_deny
 
   # User asks how to use bot and sends image
   - story: User asks how to use bot and sends image
     steps:
       - intent: bot_how_to_use
-      - action: utter_bot_how_to_use
+      - action: acc_bot_how_to_use
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
 
   # User sends image, bot processes and calculates price
   - story: User sends image, bot processes it and calculates price
     steps:
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
       - intent: detect_encoded_string
       - action: process_image
       - intent: calculate_price
@@ -154,129 +154,127 @@ stories:
   - story: User confirms bot capabilities
     steps:
       - intent: bot_capabilities
-      - action: utter_bot_capabilities
+      - action: acc_bot_capabilities
       - intent: affirm
-      - action: utter_affirm
+      - action: acc_affirm
 
   # Asking for contact information
   - story: User asks for contact information
     steps:
       - intent: contact
-      - action: utter_contact
+      - action: acc_contact
 
   # User asks for both company and product info
-  - story: User asks for company and product information
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: TimKiemSanPham
-      - action: action_search_product
+  # - story: User asks for company and product information
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
 
   # User sends invalid image and fallback occurs
   - story: User sends invalid image and bot falls back
     steps:
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
       - intent: nlu_fallback
       - action: process_fallback
 
   # Sending image for recommendations
-  - story: User sends image and asks for recommendations
-    steps:
-      - intent: send_image
-      - action: utter_send_image
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
+#  - story: User sends image and asks for recommendations
+#    steps:
+#      - intent: send_image
+#      - action: acc_send_image
+#      - intent: bot_recommendations
+#      - action: acc_bot_recommendations
 
   # User asks for more info about products and company
-  - story: User searches for product and asks about the company
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: company_introduction
-      - action: utter_company_introduction
+  # - story: User searches for product and asks about the company
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
 
   # User greets and asks how to use bot
   - story: User greets and asks how to use bot
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: bot_how_to_use
-      - action: utter_bot_how_to_use
+      - action: acc_bot_how_to_use
 
   # User asks about bot limitations after sending image
   - story: User sends image and asks about bot limitations
     steps:
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
       - intent: bot_limitations
-      - action: utter_bot_limitations
+      - action: acc_bot_limitations
 
   # Price calculation after sending image
   - story: User sends image and requests price calculation
     steps:
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
+      - intent: calculate_price
+      - action: calculate_price
+      - intent: inform_category
+      - action: calculate_price
       - intent: calculate_price
       - action: calculate_price
 
   # User searches for product, then asks for company info
-  - story: User searches for product and asks for company information
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: company_introduction
-      - action: utter_company_introduction
+  # - story: User searches for product and asks for company information
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
 
   # User greets and asks for feedback
-  - story: User greets and provides feedback
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User greets and provides feedback
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User gives feedback and asks about product
-  - story: User provides feedback and asks about a product
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: TimKiemSanPham
-      - action: action_search_product
+  # - story: User provides feedback and asks about a product
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
 
   # User asks about bot capabilities and provides feedback
-  - story: User asks about bot capabilities and gives feedback
-    steps:
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks about bot capabilities and gives feedback
+  #   steps:
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
-  # Multiple queries about company
-  - story: User asks multiple times about company information
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: company_introduction
-      - action: utter_company_introduction
+
 
   # User provides feedback, receives recommendation, and thanks
-  - story: User gives feedback, asks for recommendations, and thanks
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: thanks
-      - action: utter_thanks
+  # - story: User gives feedback, asks for recommendations, and thanks
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: bot_recommendations
+  #     - action: acc_bot_recommendations
+  #     - intent: thanks
+  #     - action: acc_thanks
 
   # Confirming and sending image for price calculation
   - story: User confirms and sends image for price calculation
     steps:
       - intent: affirm
-      - action: utter_affirm
+      - action: acc_affirm
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
       - intent: calculate_price
       - action: calculate_price
 
@@ -284,55 +282,55 @@ stories:
   - story: User confirms bot introduction
     steps:
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
       - intent: affirm
-      - action: utter_affirm
+      - action: acc_affirm
 
 
 
   # Product search with confirmation and goodbye
-  - story: User searches for product, confirms and says goodbye
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: affirm
-      - action: utter_affirm
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User searches for product, confirms and says goodbye
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # Asking bot to help with calculation after greetings
   - story: User greets and asks bot for price calculation
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: calculate_price
       - action: calculate_price
 
   # User requests product information and feedback
-  - story: User asks for product information and provides feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product information and provides feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # Product search followed by bot limitations
-  - story: User searches for a product, then asks about bot limitations
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: bot_limitations
-      - action: utter_bot_limitations
+  # - story: User searches for a product, then asks about bot limitations
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: bot_limitations
+  #     - action: acc_bot_limitations
 
   # User requests contact info after providing feedback
-  - story: User gives feedback and then asks for contact info
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: contact
-      - action: utter_contact
+  # - story: User gives feedback and then asks for contact info
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: contact
+  #     - action: acc_contact
 
 
 
@@ -341,592 +339,592 @@ stories:
   - story: User asks for help using the bot and then says goodbye
     steps:
       - intent: bot_how_to_use
-      - action: utter_bot_how_to_use
+      - action: acc_bot_how_to_use
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   # User requests recommendations after sending an image
-  - story: User sends an image and asks for recommendations
-    steps:
-      - intent: send_image
-      - action: utter_send_image
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
+#  - story: User sends an image and asks for recommendations
+#    steps:
+#      - intent: send_image
+#      - action: acc_send_image
+#      - intent: bot_recommendations
+#      - action: acc_bot_recommendations
 
   # User searches for product, confirms, and then asks for contact
-  - story: User searches for a product, confirms, and asks for contact
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: affirm
-      - action: utter_affirm
-      - intent: contact
-      - action: utter_contact
+  # - story: User searches for a product, confirms, and asks for contact
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: contact
+  #     - action: acc_contact
 
   # Bot introduces itself, user denies, then asks for contact
   - story: Bot introduces itself, user denies, then asks for contact
     steps:
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
       - intent: deny
-      - action: utter_deny
+      - action: acc_deny
       - intent: contact
-      - action: utter_contact
+      - action: acc_contact
 
   # User provides feedback, then greets and asks for product info
-  - story: User provides feedback, then greets and asks for product info
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: greet
-      - action: utter_greet
-      - intent: TimKiemSanPham
-      - action: action_search_product
+  # - story: User provides feedback, then greets and asks for product info
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
 
   # User asks for product details, then greets, then says goodbye
-  - story: User asks for product details, greets, and then says goodbye
-    steps:
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: greet
-      - action: utter_greet
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for product details, greets, and then says goodbye
+  #   steps:
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User confirms bot information, asks for feedback, and says goodbye
-  - story: User confirms bot info, gives feedback, and says goodbye
-    steps:
-      - intent: bot_introduction
-      - action: utter_bot_introduction
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User confirms bot info, gives feedback, and says goodbye
+  #   steps:
+  #     - intent: bot_introduction
+  #     - action: acc_bot_introduction
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # Product search, bot recommendations, and goodbye
-  - story: User searches for product, asks for recommendations, and says goodbye
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User searches for product, asks for recommendations, and says goodbye
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: bot_recommendations
+  #     - action: acc_bot_recommendations
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for bot recommendations after searching for a product
-  - story: User asks for bot recommendations after searching for a product
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
+  # - story: User asks for bot recommendations after searching for a product
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: bot_recommendations
+  #     - action: acc_bot_recommendations
 
   # User asks for feedback and receives confirmation
-  - story: User asks for feedback and receives confirmation
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: affirm
-      - action: utter_affirm
+  # - story: User asks for feedback and receives confirmation
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: affirm
+  #     - action: acc_affirm
 
   # User asks for product information, then gives feedback
-  - story: User asks for product information, then gives feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product information, then gives feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # Greeting, asking how to use bot, then goodbye
   - story: User greets, asks how to use bot, and says goodbye
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: bot_how_to_use
-      - action: utter_bot_how_to_use
+      - action: acc_bot_how_to_use
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   # User confirms the bot introduction and gives feedback
-  - story: User confirms bot introduction and gives feedback
-    steps:
-      - intent: bot_introduction
-      - action: utter_bot_introduction
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User confirms bot introduction and gives feedback
+  #   steps:
+  #     - intent: bot_introduction
+  #     - action: acc_bot_introduction
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User sends image, asks for recommendations, and says goodbye
-  - story: User sends an image, asks for recommendations, and says goodbye
-    steps:
-      - intent: send_image
-      - action: utter_send_image
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: goodbye
-      - action: utter_goodbye
+#  - story: User sends an image, asks for recommendations, and says goodbye
+#    steps:
+#      - intent: send_image
+#      - action: acc_send_image
+#      - intent: bot_recommendations
+#      - action: acc_bot_recommendations
+#      - intent: goodbye
+#      - action: acc_goodbye
 
   # User asks for product information, receives confirmation, then gives feedback
-  - story: User asks for product information, confirms, then gives feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product information, confirms, then gives feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # Product search, company information, then goodbye
-  - story: User searches for product, asks for company info, then says goodbye
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User searches for product, asks for company info, then says goodbye
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User greets, receives bot capabilities info, and says goodbye
   - story: User greets, receives bot capabilities info, and says goodbye
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: bot_capabilities
-      - action: utter_bot_capabilities
+      - action: acc_bot_capabilities
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   # User asks for company info, receives product info, and then greets
-  - story: User asks for company info, receives product info, and greets
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: greet
-      - action: utter_greet
+  # - story: User asks for company info, receives product info, and greets
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: greet
+  #     - action: acc_greet
 
   # User provides feedback, then asks for product information
-  - story: User provides feedback, then asks for product information
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: TimKiemSanPham
-      - action: action_search_product
+  # - story: User provides feedback, then asks for product information
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
 
-  # Multiple product searches with bot responses
-  - story: User searches for multiple products and receives information
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: ThongTinSanPham
-      - action: action_product_info
+  # # Multiple product searches with bot responses
+  # - story: User searches for multiple products and receives information
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
 
   # User confirms product and gives feedback
-  - story: User confirms product info and gives feedback
-    steps:
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User confirms product info and gives feedback
+  #   steps:
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # Bot introduces itself, user asks for capabilities, and confirms
   - story: Bot introduces itself, user asks about capabilities, and confirms
     steps:
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
       - intent: bot_capabilities
-      - action: utter_bot_capabilities
+      - action: acc_bot_capabilities
       - intent: affirm
-      - action: utter_affirm
+      - action: acc_affirm
 
   # User asks for product search, receives information, and then says goodbye
-  - story: User asks for product search, receives information, and says goodbye
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for product search, receives information, and says goodbye
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User requests company information and then confirms product details
-  - story: User requests company information and then confirms product details
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: affirm
-      - action: utter_affirm
-      - intent: ThongTinSanPham
-      - action: action_product_info
+  # - story: User requests company information and then confirms product details
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
 
   # User gives feedback, requests product info, then says goodbye
-  - story: User gives feedback, requests product info, then says goodbye
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User gives feedback, requests product info, then says goodbye
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks about bot capabilities and gives feedback
-  - story: User asks about bot capabilities and gives feedback
-    steps:
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks about bot capabilities and gives feedback
+  #   steps:
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User sends image, asks for bot recommendations, and confirms
-  - story: User sends an image, asks for bot recommendations, and confirms
-    steps:
-      - intent: send_image
-      - action: utter_send_image
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: affirm
-      - action: utter_affirm
+#  - story: User sends an image, asks for bot recommendations, and confirms
+#    steps:
+#      - intent: send_image
+#      - action: acc_send_image
+#      - intent: bot_recommendations
+#      - action: acc_bot_recommendations
+#      - intent: affirm
+#      - action: acc_affirm
 
   # User asks for product information, receives confirmation, and provides feedback
-  - story: User asks for product information, receives confirmation, and provides feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product information, receives confirmation, and provides feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
-  # User greets the bot, asks for product search, and gives feedback
-  - story: User greets the bot, asks for product search, and gives feedback
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: feed_back
-      - action: utter_feedback
+  # # User greets the bot, asks for product search, and gives feedback
+  # - story: User greets the bot, asks for product search, and gives feedback
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User confirms bot info, asks for feedback, then asks for contact
-  - story: User confirms bot info, asks for feedback, then asks for contact
-    steps:
-      - intent: bot_introduction
-      - action: utter_bot_introduction
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: contact
-      - action: utter_contact
+  # - story: User confirms bot info, asks for feedback, then asks for contact
+  #   steps:
+  #     - intent: bot_introduction
+  #     - action: acc_bot_introduction
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: contact
+  #     - action: acc_contact
 
   # User asks for company info, receives product details, and greets the bot
-  - story: User asks for company info, receives product details, and greets the bot
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: greet
-      - action: utter_greet
+  # - story: User asks for company info, receives product details, and greets the bot
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: greet
+  #     - action: acc_greet
 
   # User asks for product information, receives feedback, and then says goodbye
-  - story: User asks for product information, receives feedback, and then says goodbye
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for product information, receives feedback, and then says goodbye
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for bot recommendations, receives feedback, and says goodbye
-  - story: User asks for bot recommendations, receives feedback, and says goodbye
-    steps:
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for bot recommendations, receives feedback, and says goodbye
+  #   steps:
+  #     - intent: bot_recommendations
+  #     - action: acc_bot_recommendations
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for product details, receives company info, and then gives feedback
-  - story: User asks for product details, receives company info, and then gives feedback
-    steps:
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product details, receives company info, and then gives feedback
+  #   steps:
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User greets the bot, asks about bot capabilities, and then asks for product info
-  - story: User greets the bot, asks about bot capabilities, and then asks for product info
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: TimKiemSanPham
-      - action: action_search_product
+  # - story: User greets the bot, asks about bot capabilities, and then asks for product info
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
 
 
 
   # User asks about bot limitations, confirms product search, and says goodbye
-  - story: User asks about bot limitations, confirms product search, and says goodbye
-    steps:
-      - intent: bot_limitations
-      - action: utter_bot_limitations
-      - intent: affirm
-      - action: utter_affirm
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks about bot limitations, confirms product search, and says goodbye
+  #   steps:
+  #     - intent: bot_limitations
+  #     - action: acc_bot_limitations
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for company info, asks about bot capabilities, and greets
-  - story: User asks for company info, asks about bot capabilities, and greets
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: greet
-      - action: utter_greet
+  # - story: User asks for company info, asks about bot capabilities, and greets
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: greet
+  #     - action: acc_greet
 
   # User confirms bot introduction, asks for contact, and says goodbye
   - story: User confirms bot introduction, asks for contact, and says goodbye
     steps:
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
       - intent: affirm
-      - action: utter_affirm
+      - action: acc_affirm
       - intent: contact
-      - action: utter_contact
+      - action: acc_contact
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   # User asks for feedback, receives product information, and then says goodbye
-  - story: User asks for feedback, receives product information, and then says goodbye
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for feedback, receives product information, and then says goodbye
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for feedback, asks about bot limitations, and then says goodbye
-  - story: User asks for feedback, asks about bot limitations, and then says goodbye
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: bot_limitations
-      - action: utter_bot_limitations
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for feedback, asks about bot limitations, and then says goodbye
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: bot_limitations
+  #     - action: acc_bot_limitations
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User greets the bot, confirms product search, then asks for feedback
-  - story: User greets the bot, confirms product search, then asks for feedback
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User greets the bot, confirms product search, then asks for feedback
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User greets the bot, asks for recommendations, and then asks for company info
-  - story: User greets the bot, asks for recommendations, and then asks for company info
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: company_introduction
-      - action: utter_company_introduction
+  # - story: User greets the bot, asks for recommendations, and then asks for company info
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: bot_recommendations
+  #     - action: acc_bot_recommendations
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
 
-  # User asks about bot capabilities, sends an image, and gives feedback
-  - story: User asks about bot capabilities, sends an image, and gives feedback
-    steps:
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: send_image
-      - action: utter_send_image
-      - intent: feed_back
-      - action: utter_feedback
+  # # User asks about bot capabilities, sends an image, and gives feedback
+  # - story: User asks about bot capabilities, sends an image, and gives feedback
+  #   steps:
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: send_image
+  #     - action: acc_send_image
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
-  # User asks for company information, asks for feedback, and then says goodbye
-  - story: User asks for company information, asks for feedback, and then says goodbye
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: goodbye
-      - action: utter_goodbye
+  # # User asks for company information, asks for feedback, and then says goodbye
+  # - story: User asks for company information, asks for feedback, and then says goodbye
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
-  - story: User confirms bot info, asks for product info, and says goodbye
-    steps:
-      - intent: bot_introduction
-      - action: utter_bot_introduction
-      - intent: affirm
-      - action: utter_affirm
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User confirms bot info, asks for product info, and says goodbye
+  #   steps:
+  #     - intent: bot_introduction
+  #     - action: acc_bot_introduction
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User greets the bot, asks about company info, and then asks for feedback
-  - story: User greets the bot, asks about company info, and then asks for feedback
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User greets the bot, asks about company info, and then asks for feedback
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User asks for bot capabilities, asks for feedback, and then says goodbye
-  - story: User asks for bot capabilities, asks for feedback, and then says goodbye
-    steps:
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for bot capabilities, asks for feedback, and then says goodbye
+  #   steps:
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for bot limitations, receives product information, and says goodbye
-  - story: User asks for bot limitations, receives product information, and says goodbye
-    steps:
-      - intent: bot_limitations
-      - action: utter_bot_limitations
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for bot limitations, receives product information, and says goodbye
+  #   steps:
+  #     - intent: bot_limitations
+  #     - action: acc_bot_limitations
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User greets, requests company information, and provides feedback
-  - story: User greets, requests company information, and provides feedback
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User greets, requests company information, and provides feedback
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User asks for bot introduction, requests product details, and then gives feedback
-  - story: User asks for bot introduction, requests product details, and then gives feedback
-    steps:
-      - intent: bot_introduction
-      - action: utter_bot_introduction
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for bot introduction, requests product details, and then gives feedback
+  #   steps:
+  #     - intent: bot_introduction
+  #     - action: acc_bot_introduction
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User asks for product search, receives information, then gives feedback
-  - story: User asks for product search, receives information, then gives feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product search, receives information, then gives feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User asks about bot capabilities, receives company info, and says goodbye
-  - story: User asks about bot capabilities, receives company info, and says goodbye
-    steps:
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks about bot capabilities, receives company info, and says goodbye
+  #   steps:
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
-  # User asks for bot recommendations, gives feedback, and says goodbye
-  - story: User asks for bot recommendations, gives feedback, and says goodbye
-    steps:
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: goodbye
-      - action: utter_goodbye
+  # # User asks for bot recommendations, gives feedback, and says goodbye
+  # - story: User asks for bot recommendations, gives feedback, and says goodbye
+  #   steps:
+  #     - intent: bot_recommendations
+  #     - action: acc_bot_recommendations
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for product info, sends an image, and confirms
-  - story: User asks for product info, sends an image, and confirms
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: send_image
-      - action: utter_send_image
-      - intent: affirm
-      - action: utter_affirm
+  # - story: User asks for product info, sends an image, and confirms
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: send_image
+  #     - action: acc_send_image
+  #     - intent: affirm
+  #     - action: acc_affirm
 
   # User asks for product search, receives recommendations, and gives feedback
-  - story: User asks for product search, receives recommendations, and gives feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product search, receives recommendations, and gives feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: bot_recommendations
+  #     - action: acc_bot_recommendations
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User greets the bot, receives product info, and says goodbye
-  - story: User greets the bot, receives product info, and says goodbye
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ThongTinSanPham
-      - action: action_product_info
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User greets the bot, receives product info, and says goodbye
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: ThongTinSanPham
+  #     - action: action_product_info
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
   # User asks for bot introduction, confirms, and then asks for feedback
-  - story: User asks for bot introduction, confirms, and then asks for feedback
-    steps:
-      - intent: bot_introduction
-      - action: utter_bot_introduction
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for bot introduction, confirms, and then asks for feedback
+  #   steps:
+  #     - intent: bot_introduction
+  #     - action: acc_bot_introduction
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User asks for company info, requests feedback, and then greets the bot
-  - story: User asks for company info, requests feedback, and then greets the bot
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: greet
-      - action: utter_greet
+  # - story: User asks for company info, requests feedback, and then greets the bot
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: greet
+  #     - action: acc_greet
 
   # User asks for feedback, requests product info, and then says goodbye
-  - story: User asks for feedback, requests product info, and then says goodbye
-    steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: goodbye
-      - action: utter_goodbye
+  # - story: User asks for feedback, requests product info, and then says goodbye
+  #   steps:
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: goodbye
+  #     - action: acc_goodbye
 
 
 
@@ -934,68 +932,580 @@ stories:
   - story: User greets, asks for bot limitations, and says goodbye
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
       - intent: bot_limitations
-      - action: utter_bot_limitations
+      - action: acc_bot_limitations
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
+
+
 
   # User asks for product info, confirms, and gives feedback
-  - story: User asks for product info, confirms, and gives feedback
-    steps:
-      - intent: TimKiemSanPham
-      - action: action_search_product
-      - intent: affirm
-      - action: utter_affirm
-      - intent: feed_back
-      - action: utter_feedback
+  # - story: User asks for product info, confirms, and gives feedback
+  #   steps:
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
+  #     - intent: affirm
+  #     - action: acc_affirm
+  #     - intent: feed_back
+  #     - action: acc_feedback
 
   # User asks for bot capabilities, gives feedback, and asks for product info
-  - story: User asks for bot capabilities, gives feedback, and asks for product info
-    steps:
-      - intent: bot_capabilities
-      - action: utter_bot_capabilities
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: TimKiemSanPham
-      - action: action_search_product
+  # - story: User asks for bot capabilities, gives feedback, and asks for product info
+  #   steps:
+  #     - intent: bot_capabilities
+  #     - action: acc_bot_capabilities
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: TimKiemSanPham
+  #     - action: action_search_product
 
   # User greets, asks for company info, and asks about bot limitations
-  - story: User greets, asks for company info, and asks about bot limitations
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: company_introduction
-      - action: utter_company_introduction
-      - intent: bot_limitations
-      - action: utter_bot_limitations
+  # - story: User greets, asks for company info, and asks about bot limitations
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
+  #     - intent: bot_limitations
+  #     - action: acc_bot_limitations
 
   # User greets, asks for feedback, and asks for contact info
-  - story: User greets, asks for feedback, and asks for contact info
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: contact
-      - action: utter_contact
+  # - story: User greets, asks for feedback, and asks for contact info
+  #   steps:
+  #     - intent: greet
+  #     - action: acc_greet
+  #     - intent: feed_back
+  #     - action: acc_feedback
+  #     - intent: contact
+  #     - action: acc_contact
 
   # User asks for bot limitations, receives recommendations, and confirms
-  - story: User asks for bot limitations, receives recommendations, and confirms
+#  - story: User asks for bot limitations, receives recommendations, and confirms
+#    steps:
+#      - intent: bot_limitations
+#      - action: acc_bot_limitations
+#      - intent: bot_recommendations
+#      - action: acc_bot_recommendations
+#      - intent: affirm
+#      - action: acc_affirm
+#
+#   User asks for feedback, receives product info, and asks for contact
+#   - story: User asks for feedback, receives product info, and asks for contact
+#     steps:
+#       - intent: feed_back
+#       - action: acc_feedback
+#       - intent: TimKiemSanPham
+#       - action: action_search_product
+#       - intent: contact
+#       - action: acc_contact
+#
+  - story: Người dùng yêu cầu đặt bàn và cung cấp thông tin
     steps:
-      - intent: bot_limitations
-      - action: utter_bot_limitations
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
-      - intent: affirm
-      - action: utter_affirm
+      - intent: consult
+      - action: send_consult
 
-  # User asks for feedback, receives product info, and asks for contact
-  - story: User asks for feedback, receives product info, and asks for contact
+  - story: Chào hỏi và giới thiệu bot
     steps:
-      - intent: feed_back
-      - action: utter_feedback
-      - intent: TimKiemSanPham
-      - action: action_search_product
+      - intent: greet
+      - action: acc_greet
+      - intent: bot_introduction
+      - action: acc_bot_introduction
+      - intent: bot_capabilities
+      - action: acc_bot_capabilities
+      - intent: goodbye
+      - action: acc_goodbye
+
+  - story: Hỏi về sản phẩm và tính giá
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: calculate_price
+      - action: calculate_price
+      - intent: goodbye
+      - action: acc_goodbye
+  - story: Gửi thông tin tư vấn
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: consult
+      - action: send_consult
+      - intent: goodbye
+      - action: acc_goodbye
+  - story: Xử lý phản hồi và từ chối
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: thanks
+      - action: acc_thanks
+      - intent: affirm
+      - action: acc_affirm
+      - intent: deny
+      - action: acc_deny
+      - intent: goodbye
+      - action: acc_goodbye
+
+  - story: Xử lý câu hỏi không xác định
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: goodbye
+      - action: acc_goodbye
+
+
+
+  - story: User interrupts the form and doesn't want to continue
+    steps:
+    - intent: book_consult
+    - action: book_consult
+    - active_loop: book_consult
+    - intent: deny
+    - action: acc_deny
+    - active_loop: null
+
+  - story: greet_and_introduction
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: bot_introduction
+    - action: acc_bot_introduction
+
+  - story: bot_capabilities_and_usage
+    steps:
+    - intent: bot_capabilities
+    - action: acc_bot_capabilities
+    - intent: bot_how_to_use
+    - action: acc_bot_how_to_use
+
+  - story: send_image_and_calculate_price
+    steps:
+    - intent: send_image
+    - action: acc_send_image
+    - intent: calculate_price
+    - action: calculate_price
+
+  - story: goodbye_after_bot_capabilities
+    steps:
+    - intent: bot_capabilities
+    - action: acc_bot_capabilities
+    - intent: goodbye
+    - action: acc_goodbye
+
+  - story: thank_and_contact
+    steps:
+    - intent: thanks
+    - action: acc_thanks
+    - intent: contact
+    - action: acc_contact
+
+
+  - story: consult_after_affirm
+    steps:
+    - intent: affirm
+    - action: acc_affirm
+    - intent: consult
+    - action: acc_no_result
+
+  - story: deny_consult
+    steps:
+    - intent: consult
+    - action: acc_no_result
+    - intent: deny
+    - action: acc_deny
+
+  - story: greet_and_book_consult
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: book_consult
+    - action: book_consult
+
+  - story: bot_how_to_use_and_limitations
+    steps:
+    - intent: bot_how_to_use
+    - action: acc_bot_how_to_use
+    - intent: bot_limitations
+    - action: acc_bot_limitations
+
+  - story: goodbye_after_calculation
+    steps:
+    - intent: calculate_price
+    - action: calculate_price
+    - intent: goodbye
+    - action: acc_goodbye
+
+  - story: affirm_and_contact
+    steps:
+    - intent: affirm
+    - action: acc_affirm
+    - intent: contact
+    - action: acc_contact
+
+  - story: send_image_and_affirm
+    steps:
+    - intent: send_image
+    - action: acc_send_image
+    - intent: affirm
+    - action: acc_affirm
+
+  - story: greet_and_thanks
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: thanks
+    - action: acc_thanks
+
+  - story: consult_after_how_to_use
+    steps:
+    - intent: bot_how_to_use
+    - action: acc_bot_how_to_use
+    - intent: consult
+    - action: acc_no_result
+
+  - story: book_consult_after_image
+    steps:
+    - intent: send_image
+    - action: acc_send_image
+    - intent: book_consult
+    - action: book_consult
+
+  - story: detect_encoded_string_and_thanks
+    steps:
+    - intent: detect_encoded_string
+    - action: process_image
+    - intent: thanks
+    - action: acc_thanks
+
+  - story: deny_after_contact
+    steps:
+    - intent: contact
+    - action: acc_contact
+    - intent: deny
+    - action: acc_deny
+
+  - story: goodbye_after_greet
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: goodbye
+    - action: acc_goodbye
+
+
+
+  - story: send_image_and_detect_encoded_string
+    steps:
+    - intent: send_image
+    - action: acc_send_image
+    - intent: detect_encoded_string
+    - action: process_image
+
+  - story: goodbye_after_thanks
+    steps:
+    - intent: thanks
+    - action: acc_thanks
+    - intent: goodbye
+    - action: acc_goodbye
+
+  - story: affirm_after_how_to_use
+    steps:
+    - intent: bot_how_to_use
+    - action: acc_bot_how_to_use
+    - intent: affirm
+    - action: acc_affirm
+
+
+  - story: detect_encoded_string_and_calculate_price
+    steps:
+    - intent: detect_encoded_string
+    - action: process_image
+    - intent: calculate_price
+    - action: calculate_price
+
+  - story: consult_after_limitations
+    steps:
+    - intent: bot_limitations
+    - action: acc_bot_limitations
+    - intent: consult
+    - action: acc_no_result
+
+  - story: deny_after_how_to_use
+    steps:
+    - intent: bot_how_to_use
+    - action: acc_bot_how_to_use
+    - intent: deny
+    - action: acc_deny
+
+  - story: greet_and_send_image
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: send_image
+    - action: acc_send_image
+
+  - story: contact_after_greet
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: contact
+    - action: acc_contact
+
+  - story: affirm_after_calculate_price
+    steps:
+    - intent: calculate_price
+    - action: calculate_price
+    - intent: affirm
+    - action: acc_affirm
+
+  - story: deny_after_calculate_price
+    steps:
+    - intent: calculate_price
+    - action: calculate_price
+    - intent: deny
+    - action: acc_deny
+
+  - story: goodbye_after_limitations
+    steps:
+    - intent: bot_limitations
+    - action: acc_bot_limitations
+    - intent: goodbye
+    - action: acc_goodbye
+
+  - story: consult_after_contact
+    steps:
+    - intent: contact
+    - action: acc_contact
+    - intent: consult
+    - action: acc_no_result
+
+  - story: goodbye_after_affirm
+    steps:
+    - intent: affirm
+    - action: acc_affirm
+    - intent: goodbye
+    - action: acc_goodbye
+
+  - story: greet_and_detect_encoded_string
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: detect_encoded_string
+    - action: process_image
+
+  - story: goodbye_after_send_image
+    steps:
+    - intent: send_image
+    - action: acc_send_image
+    - intent: goodbye
+    - action: acc_goodbye
+
+  - story: thanks_after_contact
+    steps:
+    - intent: contact
+    - action: acc_contact
+    - intent: thanks
+    - action: acc_thanks
+
+  - story: greet_and_affirm
+    steps:
+    - intent: greet
+    - action: acc_greet
+    - intent: affirm
+    - action: acc_affirm
+
+  - story: consult_after_detect_encoded_string
+    steps:
+    - intent: detect_encoded_string
+    - action: process_image
+    - intent: consult
+    - action: acc_no_result
+
+  - story: deny_after_send_image
+    steps:
+    - intent: send_image
+    - action: acc_send_image
+    - intent: deny
+    - action: acc_deny
+
+  - story: affirm_after_contact
+    steps:
+    - intent: contact
+    - action: acc_contact
+    - intent: affirm
+    - action: acc_affirm
+
+
+
+  - story: contact_and_book_consult
+    steps:
+    - intent: contact
+    - action: acc_contact
+    - intent: book_consult
+    - action: book_consult
+
+  - story: affirm_after_limitations
+    steps:
+    - intent: bot_limitations
+    - action: acc_bot_limitations
+    - intent: affirm
+    - action: acc_affirm
+
+  - story: Greet, introduction, ask capabilities, goodbye
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: bot_introduction
+      - action: acc_bot_introduction
+      - intent: bot_capabilities
+      - action: acc_bot_capabilities
+      - intent: goodbye
+      - action: acc_goodbye
+
+  - story: Greet, ask how to use, send image, affirm
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: bot_how_to_use
+      - action: acc_bot_how_to_use
+      - intent: send_image
+      - action: acc_send_image
+      - intent: affirm
+      - action: acc_affirm
+
+
+
+  - story: Ask capabilities, send image, calculate price, thanks
+    steps:
+      - intent: bot_capabilities
+      - action: acc_bot_capabilities
+      - intent: send_image
+      - action: acc_send_image
+      - intent: calculate_price
+      - action: calculate_price
+      - intent: thanks
+      - action: acc_thanks
+
+  - story: Consult, affirm, detect encoded string, goodbye
+    steps:
+      - intent: consult
+      - action: acc_no_result
+      - intent: affirm
+      - action: acc_affirm
+      - intent: detect_encoded_string
+      - action: process_image
+      - intent: goodbye
+      - action: acc_goodbye
+
+  - story: Ask how to use, send image, calculate price, contact
+    steps:
+      - intent: bot_how_to_use
+      - action: acc_bot_how_to_use
+      - intent: send_image
+      - action: acc_send_image
+      - intent: calculate_price
+      - action: calculate_price
       - intent: contact
-      - action: utter_contact
+      - action: acc_contact
+
+
+  - story: Greet, consult, calculate price, deny
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: consult
+      - action: acc_no_result
+      - intent: calculate_price
+      - action: calculate_price
+      - intent: deny
+      - action: acc_deny
+
+  - story: Send image, detect encoded string, affirm, thanks
+    steps:
+      - intent: send_image
+      - action: acc_send_image
+      - intent: detect_encoded_string
+      - action: process_image
+      - intent: affirm
+      - action: acc_affirm
+      - intent: thanks
+      - action: acc_thanks
+
+
+  - story: Introduction, ask how to use, send image, affirm
+    steps:
+      - intent: bot_introduction
+      - action: acc_bot_introduction
+      - intent: bot_how_to_use
+      - action: acc_bot_how_to_use
+      - intent: send_image
+      - action: acc_send_image
+      - intent: affirm
+      - action: acc_affirm
+
+  - story: Greet, contact, consult, goodbye
+    steps:
+      - intent: greet
+      - action: acc_greet
+      - intent: contact
+      - action: acc_contact
+      - intent: consult
+      - action: acc_no_result
+      - intent: goodbye
+      - action: acc_goodbye
+
+  - story: Affirm, deny, calculate price, goodbye
+    steps:
+      - intent: affirm
+      - action: acc_affirm
+      - intent: deny
+      - action: acc_deny
+      - intent: calculate_price
+      - action: calculate_price
+      - intent: goodbye
+      - action: acc_goodbye
+
+  - story: Consult, send image, affirm, thanks
+    steps:
+      - intent: consult
+      - action: acc_no_result
+      - intent: send_image
+      - action: acc_send_image
+      - intent: affirm
+      - action: acc_affirm
+      - intent: thanks
+      - action: acc_thanks
+
+  - story: Introduction, ask capabilities, contact, goodbye
+    steps:
+      - intent: bot_introduction
+      - action: acc_bot_introduction
+      - intent: bot_capabilities
+      - action: acc_bot_capabilities
+      - intent: contact
+      - action: acc_contact
+      - intent: goodbye
+      - action: acc_goodbye
+
+
+
+  - story: Ask how to use, contact, thanks, goodbye
+    steps:
+      - intent: bot_how_to_use
+      - action: acc_bot_how_to_use
+      - intent: contact
+      - action: acc_contact
+      - intent: thanks
+      - action: acc_thanks
+      - intent: goodbye
+      - action: acc_goodbye
+
+  - story: Consult, affirm, calculate price, goodbye
+    steps:
+      - intent: consult
+      - action: acc_no_result
+      - intent: affirm
+      - action: acc_affirm
+      - intent: calculate_price
+      - action: calculate_price
+      - intent: goodbye
+      - action: acc_goodbye
+

@@ -12,7 +12,7 @@ def count_stories(yaml_file):
         return 0
 
 # Đường dẫn đến tập tin YAML
-yaml_file = 'data/stories.yml'
+yaml_file = 'stories.yml'
 
 # Đếm số lượng stories
 story_count = count_stories(yaml_file)

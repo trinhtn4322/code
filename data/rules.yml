@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.1"
 
 rules:
 
@@ -6,79 +6,81 @@ rules:
   - rule: User greets the bot
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: acc_greet
 
   - rule: Introduction the bot
     steps:
       - intent: bot_introduction
-      - action: utter_bot_introduction
+      - action: acc_bot_introduction
 
-  - rule: Introduction company
-    steps:
-      - intent: company_introduction
-      - action: utter_company_introduction
+  # - rule: Introduction company
+  #   steps:
+  #     - intent: company_introduction
+  #     - action: acc_company_introduction
 
   - rule: Capabilities the bot
     steps:
       - intent: bot_capabilities
-      - action: utter_bot_capabilities
+      - action: acc_bot_capabilities
 
   - rule: How to use the bot
     steps:
-      - intent: bot_how_to_useuse
-      - action: utter_bot_how_to_useuse
+      - intent: bot_how_to_use
+      - action: acc_bot_how_to_use
 
   - rule: Limitation of the bot
     steps:
       - intent: bot_limitations
-      - action: utter_bot_limitations
+      - action: acc_bot_limitations
 
 # Image
   - rule: User sends an image
     steps:
       - intent: send_image
-      - action: utter_send_image
+      - action: acc_send_image
 
   - rule: Calculate price
+    condition:
+      - active_loop: calculate_price
     steps:
       - intent: calculate_price
       - action: calculate_price
 
-  - rule: Recomend about image
+  - rule: Calculate price_type
     steps:
-      - intent: bot_recommendations
-      - action: utter_bot_recommendations
+      - intent: inform_category
+      - action: calculate_price
 
-  # Basic
   - rule: User says goodbye
     steps:
       - intent: goodbye
-      - action: utter_goodbye
+      - action: acc_goodbye
 
   - rule: User thanks the bot
     steps:
       - intent: thanks
-      - action: utter_thanks
+      - action: acc_thanks
 
   - rule: User affirm the bot
     steps:
       - intent: affirm
-      - action: utter_affirm
+      - action: acc_affirm
 
   - rule: User deny for bot
     steps:
       - intent: deny
-      - action: utter_deny
-
-  - rule: User feedback for bot
-    steps:
-      - intent: feedback
-      - action: utter_feedback
+      - action: acc_deny
+      - slot_was_set:
+          - consult_active: false
+  # - rule: User feedback for bot
+  #   steps:
+  #     - intent: feedback
+  #     - action: acc_feedback
 
   - rule: User asks for contact information
     steps:
       - intent: contact
-      - action: utter_contact
+      - action: acc_contact
 
   - rule: process image
     steps:
@@ -89,3 +91,17 @@ rules:
     steps:
       - intent: nlu_fallback
       - action: process_fallback
+#--------------
+
+  - rule: Handle problem with gender
+    condition:
+      - active_loop: send_consult
+    steps:
+      - intent: consult
+      - action: send_consult
+
+  - rule: Activate book form
+    steps:
+    - intent: book_consult
+    - action: book_consult
+    - active_loop: book_consult

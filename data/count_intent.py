@@ -1,24 +1,31 @@
-import yaml
-
 def count_intent_examples(yaml_file):
-    # Đọc dữ liệu từ file YAML
+    import yaml
+
+    # Đọc file YAML
     with open(yaml_file, 'r', encoding='utf-8') as file:
         data = yaml.safe_load(file)
 
-    # Đếm số lượng ví dụ cho mỗi intent
     intent_counts = {}
-    # Lặp qua tất cả các intent trong file
-    for intent_data in data['nlu']:
+    for intent_data in data.get('nlu', []):
+        # Kiểm tra khóa 'intent' và 'examples'
+        if 'intent' not in intent_data or 'examples' not in intent_data:
+            print(f"Invalid data format: {intent_data}")
+            continue
+
+        # Đếm số lượng ví dụ
         intent = intent_data['intent']
-        examples = intent_data['examples'].strip().split('\n')
-        intent_counts[intent] = len(examples)
-        print(len(examples))
+        examples = intent_data['examples']
+        # Tách ví dụ dựa trên định dạng chuẩn YAML
+        example_lines = examples.strip().split('\n')
+        intent_counts[intent] = len(example_lines)
+
     return intent_counts
 
-# Thay 'your_file.yml' bằng đường dẫn tới file YAML của bạn
-yaml_file = 'data/nlu.yml'
+
+# Gọi hàm với file YAML
+yaml_file = 'nlu.yml'
 intent_counts = count_intent_examples(yaml_file)
 
-# In ra kết quả
+# In kết quả
 for intent, count in intent_counts.items():
     print(f"Intent: {intent}, Examples: {count}")

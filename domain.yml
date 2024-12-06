@@ -1,33 +1,102 @@
-version: "3.0"
+version: "3.1"
+
 
 intents:
+  - book_consult
   - detect_encoded_string
+  - inform_category
   - greet
   - bot_introduction
-  - company_introduction
+#  # - company_introduction
   - bot_capabilities
   - bot_how_to_use
   - bot_limitations
   - send_image
   - calculate_price
-  - bot_recommendations
+#  - bot_recommendations
   - goodbye
   - thanks
   - affirm
   - deny
-  - feedback
+#  # - feedback
   - contact
-  - TimKiemSanPham
-  - ThongTinSanPham
-  - feed_back
+#  # - TimKiemSanPham
+#  # - ThongTinSanPham
+#  # - feed_back
+#  - -----
+#  - greet
+  - consult
+
 entities:
+  - calculate_active
+  - book
+  - name
+  - phone_number
+  - checkpoint
+  - confirmation_asked
   - area
   - length
   - width
-  - product_name
-  - product_type
-  - price_range
+  - address
+  - confirmation_change
+  - confirmation_change_cal
+  - confirmation_asked_cal
+  - save_consult
+  - consult_active
+  - type
+  - height
+  - weight
+  - mode
+  # - product_name
+  # - product_type
+  # - price_range
 slots:
+  weight:
+    type: float  # Hoặc type phù hợp với dữ liệu của bạn
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: weight
+  phone_number:
+    type: any
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: phone_number
+  name:
+    type: text  # Hoặc type phù hợp với dữ liệu của bạn
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: name
+  type:
+    type: categorical
+    values:
+      - nha thep
+      - nha xuong
+      - nha thep tole
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: type
+
+  mode:
+    type: categorical
+    values:
+      - consult
+      - calculate
+      - None
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: mode
+
+  height:
+    type: float  # Hoặc type phù hợp với dữ liệu của bạn
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: height
   area:
     type: float  # Hoặc type phù hợp với dữ liệu của bạn
     influence_conversation: false
@@ -48,71 +117,154 @@ slots:
     mappings:
       - type: from_entity
         entity: width
-  product_name:
-    type: text
+##  -------------
+  save_consult:
+    type: text  # Hoặc type phù hợp với dữ liệu của bạn
     influence_conversation: false
     mappings:
       - type: from_entity
-        entity: product_name
-  modified_message:
-    type: text
+        entity: save_consult
+  address:
+    type: text  # Hoặc type phù hợp với dữ liệu của bạn
     influence_conversation: false
     mappings:
       - type: from_entity
-        entity: modified_message
-  product_type:
-    type: text
-    influence_conversation: false
+        entity: address
+
+  checkpoint:
+    type: bool
+    initial_value: false
     mappings:
       - type: from_entity
-        entity: product_type
-  price_range:
-    type: text
-    influence_conversation: false
+        entity: checkpoint
+  book:
+    type: bool
+    initial_value: false
     mappings:
       - type: from_entity
-        entity: price_range
+        entity: book
+  consult_active:
+    type: bool
+    initial_value: false
+    mappings:
+      - type: from_entity
+        entity: consult_active
+  calculate_active:
+    type: bool
+    initial_value: false
+    mappings:
+      - type: from_entity
+        entity: calculate_active
+
+  confirmation_asked:
+    type: bool
+    initial_value: false
+    mappings:
+      - type: from_entity
+        entity: confirmation_asked
+
+  confirmation_change:
+    type: bool
+    initial_value: false
+    mappings:
+      - type: from_entity
+        entity: confirmation_change
+  confirmation_asked_cal:
+    type: bool
+    initial_value: false
+    mappings:
+      - type: from_entity
+        entity: confirmation_asked
+
+  confirmation_change_cal:
+    type: bool
+    initial_value: false
+    mappings:
+      - type: from_entity
+        entity: confirmation_change
+forms:
+
+  book_consult:
+    ignored_intents:
+    - consult
+    required_slots:
+        - name
+        - phone_number
+  send_consult:
+    required_slots:
+      - type
+      - length
+      - width
+      - height
+      - address
+      - weight
+  calculate_price:
+    required_slots:
+      - type
+      - length
+      - width
+      - height
+
+  # product_name:
+  #   type: text
+  #   influence_conversation: false
+  #   mappings:
+  #     - type: from_entity
+  #       entity: product_name
+  # modified_message:
+  #   type: text
+  #   influence_conversation: false
+  #   mappings:
+  #     - type: from_entity
+  #       entity: modified_message
+  # product_type:
+  #   type: text
+  #   influence_conversation: false
+  #   mappings:
+  #     - type: from_entity
+  #       entity: product_type
+  # price_range:
+  #   type: text
+  #   influence_conversation: false
+  #   mappings:
+  #     - type: from_entity
+  #       entity: price_range
 actions:
+  - calculate_price
+  - book_consult
   - process_fallback
   - process_image
-  - utter_greet
-  - utter_bot_introduction
-  - utter_company_introduction
-  - utter_bot_capabilities
-  - utter_bot_how_to_use
-  - utter_bot_limitations
-  - utter_send_image
-  - utter_bot_recommendations
-  - utter_goodbye
-  - utter_thanks
-  - utter_affirm
-  - utter_deny
-  - utter_feedback
-  - utter_contact
-  - calculate_price
-  - action_search_product
-  - action_product_info
+  - acc_greet
+  - acc_bot_introduction
+  - acc_bot_capabilities
+  - acc_bot_how_to_use
+  - acc_bot_limitations
+  - acc_send_image
+  - acc_goodbye
+  - acc_thanks
+  - acc_affirm
+  - acc_deny
+  - acc_contact
+  - acc_product_info
+  - acc_no_result
+  - acc_ask_product
+  - send_consult
 
 responses:
-  utter_ask_product:
-    - text: "Bạn muốn tìm sản phẩm gì?"
-  utter_product_info:
-    - text: "Sản phẩm {product_name} có giá {price} và kích thước {size}."
-  utter_no_result:
-    - text: "Xin lỗi, không tìm thấy sản phẩm phù hợp."
-  utter_greet:
-    - text: "Xin chào! Tôi có thể giúp gì cho bạn?"
-    - text: "Chào bạn, tôi là chatbot của Trung Lâm Company"
-    - text: "Xin chào! Bạn cần giúp gì hôm nay?"
-    - text: "Chào bạn, tôi ở đây để hỗ trợ bạn."
-    - text: "Chào bạn! Tôi có thể làm gì giúp bạn?"
-    - text: "Chào bạn! Bạn có câu hỏi nào không?"
-    - text: "Hi! Bạn cần hỗ trợ gì từ tôi?"
-    - text: "Xin chào! Hãy cho tôi biết bạn cần gì."
-    - text: "Chào bạn! Tôi có thể hỗ trợ bạn như thế nào?"
-    - text: "Hi there! Bạn có cần giúp đỡ gì không?"
-
-  utter_bot_introduction:
+#  acc_ask_product:
+#    - text: "Bạn muốn tìm sản phẩm gì?"
+#  acc_product_info:
+#    - text: "Sản phẩm {product_name} có giá {price} và kích thước {size}."
+#  acc_no_result:
+#    - text: "Xin lỗi, không tìm thấy sản phẩm phù hợp."
+  acc_greet:
+    - text: "Xin chào! Tôi có thể giúp gì cho bạn? Hiện tại, tôi có thể hỗ trợ bạn tư vấn dự án, tính tiền dự án, hoặc tính toán chi phí từ bản vẽ xây dựng một cách chính xác và nhanh chóng."
+    - text: "Chào bạn! Tôi là chatbot của Trung Lâm Company. Tôi có thể tư vấn dự án, tính toán chi phí dự án, và đặc biệt hỗ trợ tính toán từ bản vẽ xây dựng. Bạn cần hỗ trợ gì hôm nay?"
+    - text: "Chào bạn! Tôi có thể hỗ trợ bạn với các tính năng sau: tư vấn dự án, tính toán chi phí dự án, hoặc tính toán trực tiếp từ bản vẽ xây dựng. Hãy cho tôi biết bạn cần gì nhé!"
+    - text: "Xin chào! Hôm nay tôi có thể giúp bạn tư vấn dự án, tính toán chi phí dự án, hoặc tính toán chi phí từ bản vẽ xây dựng. Bạn muốn bắt đầu với tính năng nào?"
+    - text: "Hi there! Tôi cung cấp dịch vụ tư vấn dự án, tính toán chi phí dự án, và hỗ trợ tính toán từ bản vẽ xây dựng. Bạn cần giúp gì từ tôi hôm nay?"
+  #
+  acc_bot_introduction:
     - text: "Tôi là chatbot trợ giúp bạn về các vấn đề liên quan đến xây dựng và tính toán diện tích từ bản vẽ."
     - text: "Tôi là chatbot được Trung Lâm Company tạo ra, tôi có thể giúp bạn đọc bản vẽ xây dựng. Bạn có cần tôi giúp không?"
     - text: "Tôi là một trợ lý ảo giúp bạn tính diện tích từ bản vẽ và cung cấp thông tin về dịch vụ của công ty."
@@ -123,32 +275,33 @@ responses:
     - text: "Tôi là một công cụ hỗ trợ cho công ty Trung Lâm Company, giúp bạn giải quyết các bài toán liên quan đến xây dựng."
     - text: "Tôi có thể giúp bạn tính toán diện tích từ các bản vẽ xây dựng và cung cấp các dịch vụ liên quan."
     - text: "Tôi là chatbot được Trung Lâm Company phát triển, có thể trợ giúp bạn trong việc đọc và tính toán diện tích bản vẽ."
+#
+#  # acc_company_introduction:
+#  #   - text: "Chúng tôi là một công ty chuyên về dịch vụ xây dựng và tư vấn thiết kế."
+#  #   - text: "Tôi là chatbot thuộc sở hữu của công ty TL. Bạn có muốn tôi giúp gì không?"
+#  #   - text: "Công ty chúng tôi chuyên cung cấp dịch vụ xây dựng và các giải pháp thiết kế công trình."
+#  #   - text: "Trung Lâm Company là công ty chuyên về xây dựng và tư vấn thiết kế. Chúng tôi luôn sẵn sàng hỗ trợ bạn."
+#  #   - text: "Công ty chúng tôi cung cấp các dịch vụ liên quan đến xây dựng và tư vấn thiết kế cho các dự án lớn."
+#  #   - text: "Chúng tôi cung cấp các dịch vụ xây dựng chất lượng cao và giải pháp thiết kế sáng tạo."
+#  #   - text: "Trung Lâm Company là công ty chuyên nghiệp trong lĩnh vực xây dựng và tư vấn thiết kế."
+#  #   - text: "Chúng tôi luôn cam kết mang lại các dịch vụ xây dựng tốt nhất cho khách hàng."
+#  #   - text: "Công ty của chúng tôi chuyên cung cấp dịch vụ xây dựng và tư vấn thiết kế cho các dự án dân dụng và công nghiệp."
+#  #   - text: "Trung Lâm Company là công ty nổi bật trong lĩnh vực xây dựng, chuyên cung cấp các giải pháp và dịch vụ xây dựng chuyên nghiệp."
+#
+  acc_bot_capabilities:
+    - text: "Tôi có thể hỗ trợ bạn tư vấn dự án, tính toán chi phí dự án, và tính toán diện tích từ bản vẽ xây dựng một cách chính xác."
+    - text: "Tôi giúp bạn tính toán chi phí, tư vấn các giải pháp xây dựng phù hợp, và xử lý bản vẽ để tính toán diện tích hiệu quả."
+    - text: "Tôi có khả năng tư vấn dự án, tính toán chi phí, và hỗ trợ xử lý bản vẽ xây dựng để tính toán diện tích."
+    - text: "Tôi hỗ trợ bạn trong việc tư vấn dự án, tính toán chi phí dự án, và giải quyết các bài toán diện tích từ bản vẽ xây dựng."
+    - text: "Tôi có thể tính toán chi phí dự án, tư vấn các lựa chọn phù hợp, và xử lý bản vẽ để cung cấp diện tích chính xác."
+    - text: "Tôi có thể giúp bạn tư vấn dự án, tính toán chi phí xây dựng, và xử lý bản vẽ để tính diện tích một cách nhanh chóng và chính xác."
+    - text: "Tôi hỗ trợ tư vấn dự án, tính toán chi phí, và xử lý các bản vẽ xây dựng để đưa ra kết quả diện tích chính xác."
+    - text: "Tôi có thể tư vấn dự án, tính toán chi phí, và hỗ trợ bạn xử lý bản vẽ để tính toán diện tích."
+    - text: "Tôi chuyên cung cấp hỗ trợ về tư vấn dự án, tính toán chi phí dự án, và tính toán diện tích từ bản vẽ xây dựng."
+    - text: "Tôi có thể giúp bạn trong việc tư vấn dự án, xử lý bản vẽ xây dựng, và tính toán diện tích cùng với chi phí tương ứng."
 
-  utter_company_introduction:
-    - text: "Chúng tôi là một công ty chuyên về dịch vụ xây dựng và tư vấn thiết kế."
-    - text: "Tôi là chatbot thuộc sở hữu của công ty TL. Bạn có muốn tôi giúp gì không?"
-    - text: "Công ty chúng tôi chuyên cung cấp dịch vụ xây dựng và các giải pháp thiết kế công trình."
-    - text: "Trung Lâm Company là công ty chuyên về xây dựng và tư vấn thiết kế. Chúng tôi luôn sẵn sàng hỗ trợ bạn."
-    - text: "Công ty chúng tôi cung cấp các dịch vụ liên quan đến xây dựng và tư vấn thiết kế cho các dự án lớn."
-    - text: "Chúng tôi cung cấp các dịch vụ xây dựng chất lượng cao và giải pháp thiết kế sáng tạo."
-    - text: "Trung Lâm Company là công ty chuyên nghiệp trong lĩnh vực xây dựng và tư vấn thiết kế."
-    - text: "Chúng tôi luôn cam kết mang lại các dịch vụ xây dựng tốt nhất cho khách hàng."
-    - text: "Công ty của chúng tôi chuyên cung cấp dịch vụ xây dựng và tư vấn thiết kế cho các dự án dân dụng và công nghiệp."
-    - text: "Trung Lâm Company là công ty nổi bật trong lĩnh vực xây dựng, chuyên cung cấp các giải pháp và dịch vụ xây dựng chuyên nghiệp."
-
-  utter_bot_capabilities:
-    - text: "Tôi có thể giúp bạn tính toán diện tích từ bản vẽ, đưa ra thông tin về các sản phẩm và dịch vụ của công ty."
-    - text: "Tôi có thể tính diện tích và cung cấp các thông tin liên quan đến dịch vụ xây dựng."
-    - text: "Tôi giúp bạn tính diện tích từ bản vẽ và hỗ trợ các câu hỏi liên quan đến dịch vụ công ty."
-    - text: "Tôi có thể xử lý bản vẽ và cung cấp thông tin liên quan đến các dịch vụ xây dựng."
-    - text: "Tôi hỗ trợ tính toán diện tích bản vẽ và cung cấp thông tin về công ty."
-    - text: "Tôi có thể xử lý hình ảnh và tính toán diện tích của các bản vẽ xây dựng."
-    - text: "Tôi có khả năng tính diện tích từ bản vẽ và giải đáp các thắc mắc về dịch vụ xây dựng."
-    - text: "Tôi có thể hỗ trợ bạn trong việc tính toán diện tích từ các bản vẽ và trả lời câu hỏi về dịch vụ."
-    - text: "Tôi có thể giúp bạn đọc bản vẽ và tính toán diện tích chính xác."
-    - text: "Tôi giúp bạn giải quyết các bài toán diện tích từ bản vẽ và cung cấp thông tin dịch vụ."
-
-  utter_bot_how_to_useuse:
+#
+  acc_bot_how_to_use:
     - text: "Để sử dụng tôi, bạn có thể gửi hình ảnh bản vẽ để tôi xử lý hoặc đặt các câu hỏi liên quan đến dịch vụ xây dựng."
     - text: "Để bắt đầu, hãy gửi bản vẽ của bạn và tôi sẽ giúp bạn tính toán diện tích."
     - text: "Bạn có thể gửi hình ảnh bản vẽ để tôi tính toán diện tích và hỗ trợ các vấn đề xây dựng."
@@ -159,8 +312,8 @@ responses:
     - text: "Bạn có thể gửi hình ảnh bản vẽ hoặc hỏi tôi về các dịch vụ của công ty."
     - text: "Chỉ cần gửi bản vẽ và tôi sẽ giúp bạn tính toán diện tích."
     - text: "Gửi bản vẽ cho tôi và tôi sẽ xử lý để đưa ra kết quả chính xác."
-
-  utter_bot_limitations:
+#
+  acc_bot_limitations:
     - text: "Hiện tại, tôi chỉ hỗ trợ tính diện tích từ bản vẽ và cung cấp thông tin về dịch vụ của công ty."
     - text: "Tôi chỉ có thể giúp bạn tính diện tích từ bản vẽ. Các tính toán khác tôi chưa hỗ trợ."
     - text: "Tôi hiện tại chỉ hỗ trợ tính diện tích và giải đáp các câu hỏi liên quan đến dịch vụ xây dựng."
@@ -171,8 +324,8 @@ responses:
     - text: "Tôi chưa hỗ trợ các tính toán phức tạp khác ngoài diện tích."
     - text: "Tính diện tích từ bản vẽ là khả năng duy nhất của tôi hiện tại."
     - text: "Tôi chưa thể làm những việc khác ngoài việc tính diện tích bản vẽ."
-
-  utter_send_image:
+#
+  acc_send_image:
     - text: "Vui lòng gửi hình ảnh bản vẽ của bạn để tôi có thể xử lý."
     - text: "Hãy gửi ảnh bản vẽ để tôi tính toán diện tích cho bạn."
     - text: "Vui lòng tải lên bản vẽ để tôi có thể hỗ trợ bạn."
@@ -183,19 +336,11 @@ responses:
     - text: "Vui lòng tải lên hình ảnh bản vẽ để tôi bắt đầu tính toán."
     - text: "Bạn có thể gửi bản vẽ cho tôi để tôi xử lý."
     - text: "Vui lòng gửi hình ảnh bản vẽ để tôi tính toán diện tích cho bạn."
-
-  utter_bot_recommendations:
-    - text: "Tôi khuyên bạn nên gửi hình ảnh bản vẽ có độ phân giải cao để có kết quả tính toán chính xác nhất."
-    - text: "Hãy gửi bản vẽ có chất lượng cao để tôi có thể xử lý tốt nhất."
-    - text: "Bạn nên gửi bản vẽ có độ phân giải tốt để kết quả chính xác hơn."
-    - text: "Để có kết quả chính xác, vui lòng gửi bản vẽ rõ nét."
-    - text: "Hãy chắc chắn bản vẽ bạn gửi có độ phân giải cao để tôi tính toán chính xác."
-    - text: "Độ phân giải bản vẽ càng cao, kết quả tính toán càng chính xác."
-    - text: "Gửi bản vẽ có độ phân giải cao sẽ giúp tôi tính toán nhanh chóng và chính xác hơn."
-    - text: "Bản vẽ chất lượng cao sẽ giúp tôi cung cấp kết quả tốt hơn."
-    - text: "Hãy gửi bản vẽ rõ nét để tôi có thể tính toán chính xác diện tích."
-    - text: "Gửi bản vẽ chất lượng cao để tôi có thể đưa ra kết quả chính xác và nhanh chóng."
-  utter_goodbye:
+#
+#  acc_bot_recommendations:
+#    - text: "Tôi xin lỗi tôi chưa đủ khả năng để tư vấn chi tiết về bản vẽ cho bạn. Bạn có thể liên hệ đến đội ngũ kĩ sư của chúng tôi để được nhận sự trợ giúp sớm nhất."
+#
+  acc_goodbye:
     - text: "Tạm biệt! Hẹn gặp lại bạn!"
     - text: "Cảm ơn bạn đã tin tưởng. Bạn có thể vào link sau và điền giúp tôi feedback thêm không?"
     - text: "Tạm biệt, chúc bạn một ngày tuyệt vời!"
@@ -207,7 +352,7 @@ responses:
     - text: "Cảm ơn bạn đã lựa chọn dịch vụ của chúng tôi, tạm biệt!"
     - text: "Rất vui được giúp đỡ bạn. Tạm biệt!"
 
-  utter_thanks:
+  acc_thanks:
     - text: "Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của chúng tôi."
     - text: "Bạn có thể vào link sau và điền giúp tôi feedback thêm không?"
     - text: "Cảm ơn sự hỗ trợ và tin tưởng của bạn!"
@@ -218,8 +363,8 @@ responses:
     - text: "Cảm ơn bạn đã đồng hành cùng chúng tôi."
     - text: "Chúng tôi rất vui khi được phục vụ bạn, cảm ơn!"
     - text: "Cảm ơn bạn! Chúng tôi rất mong được hỗ trợ bạn trong tương lai."
-
-  utter_affirm:
+#
+  acc_affirm:
     - text: "Cảm ơn bạn đã xác nhận."
     - text: "Chúng tôi rất vui khi nhận được xác nhận từ bạn!"
     - text: "Cảm ơn bạn, mọi việc đã được xác nhận."
@@ -231,7 +376,7 @@ responses:
     - text: "Xác nhận đã được ghi nhận, cảm ơn bạn!"
     - text: "Cảm ơn bạn đã xác nhận! Hãy tiếp tục nếu bạn cần hỗ trợ thêm."
 
-  utter_deny:
+  acc_deny:
     - text: "Không sao, tôi có thể giúp gì khác cho bạn?"
     - text: "Rất tiếc. Tôi có thể giúp gì khác không?"
     - text: "Không sao, bạn cần thêm thông tin gì không?"
@@ -242,20 +387,20 @@ responses:
     - text: "Nếu bạn có câu hỏi nào khác, tôi luôn sẵn sàng hỗ trợ."
     - text: "Không sao! Bạn có thể cần giúp gì nữa không?"
     - text: "Nếu có vấn đề gì khác, tôi rất vui được hỗ trợ bạn."
-
-  utter_feedback:
-    - text: "Cảm ơn bạn đã đóng góp ý kiến!"
-    - text: "Bạn có thể vào link sau và điền giúp tôi feedback thêm không?"
-    - text: "Cảm ơn bạn đã chia sẻ phản hồi của mình!"
-    - text: "Phản hồi của bạn rất quan trọng đối với chúng tôi, cảm ơn bạn!"
-    - text: "Cảm ơn bạn đã giúp chúng tôi cải thiện dịch vụ!"
-    - text: "Chúng tôi đánh giá cao ý kiến của bạn, cảm ơn!"
-    - text: "Cảm ơn bạn vì đã giúp chúng tôi nâng cao chất lượng dịch vụ!"
-    - text: "Phản hồi của bạn rất quý báu, cảm ơn bạn đã chia sẻ!"
-    - text: "Cảm ơn bạn đã dành thời gian cung cấp phản hồi!"
-    - text: "Chúng tôi rất trân trọng ý kiến đóng góp của bạn, cảm ơn!"
-
-  utter_contact:
+##
+##  # acc_feedback:
+##  #   - text: "Cảm ơn bạn đã đóng góp ý kiến!"
+##  #   - text: "Bạn có thể vào link sau và điền giúp tôi feedback thêm không?"
+##  #   - text: "Cảm ơn bạn đã chia sẻ phản hồi của mình!"
+##  #   - text: "Phản hồi của bạn rất quan trọng đối với chúng tôi, cảm ơn bạn!"
+##  #   - text: "Cảm ơn bạn đã giúp chúng tôi cải thiện dịch vụ!"
+##  #   - text: "Chúng tôi đánh giá cao ý kiến của bạn, cảm ơn!"
+##  #   - text: "Cảm ơn bạn vì đã giúp chúng tôi nâng cao chất lượng dịch vụ!"
+##  #   - text: "Phản hồi của bạn rất quý báu, cảm ơn bạn đã chia sẻ!"
+##  #   - text: "Cảm ơn bạn đã dành thời gian cung cấp phản hồi!"
+##  #   - text: "Chúng tôi rất trân trọng ý kiến đóng góp của bạn, cảm ơn!"
+##
+  acc_contact:
     - text: "Bạn có thể liên hệ với chúng tôi qua số điện thoại: 0123 456 789 hoặc email: contact@xaydung.com. Ngoài ra, Bạn có thể vào link sau và điền giúp tôi feedback thêm không?"
     - text: "Để liên hệ với chúng tôi, bạn có thể gọi số: 0123 456 789 hoặc gửi email đến contact@xaydung.com. Rất mong nhận được phản hồi từ bạn."
     - text: "Bạn có thể liên hệ qua số điện thoại 0123 456 789 hoặc email contact@xaydung.com để biết thêm chi tiết."
@@ -266,3 +411,4 @@ responses:
     - text: "Nếu cần liên hệ thêm, bạn có thể gọi số điện thoại 0123 456 789 hoặc gửi email đến contact@xaydung.com."
     - text: "Liên hệ chúng tôi qua số điện thoại 0123 456 789 hoặc email contact@xaydung.com để được hỗ trợ."
     - text: "Bạn có thể liên hệ với chúng tôi qua số điện thoại 0123 456 789 hoặc email contact@xaydung.com để được trợ giúp thêm."
+###--------------

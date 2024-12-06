@@ -1,0 +1,551 @@
+[
+  {
+    "text": "Tên tôi là Dương Thanh Sơn, số điện thoại của tôi là 0901112233.",
+    "entities": [
+      {
+        "start": 11,
+        "end": 26,
+        "value": "Dương Thanh Sơn",
+        "entity": "name"
+      },
+      {
+        "start": 53,
+        "end": 63,
+        "value": "0901112233",
+        "entity": "phone"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 11,
+        "end": 16,
+        "confidence_entity": 0.7166471481323242,
+        "value": "Dương",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "name",
+        "start": 17,
+        "end": 22,
+        "confidence_entity": 0.601269543170929,
+        "value": "Thanh",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "phone",
+        "start": 53,
+        "end": 63,
+        "confidence_entity": 0.9961458444595337,
+        "value": "0901112233",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Tôi đang muốn xây một nhà kho",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 22,
+        "end": 25,
+        "confidence_entity": 0.5370311737060547,
+        "value": "nhà",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Tên tôi là Nguyễn Văn A và số điện thoại của tôi là 0901234567.",
+    "entities": [
+      {
+        "start": 11,
+        "end": 23,
+        "value": "Nguyễn Văn A",
+        "entity": "name"
+      },
+      {
+        "start": 52,
+        "end": 62,
+        "value": "0901234567",
+        "entity": "phone"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 11,
+        "end": 17,
+        "confidence_entity": 0.541046679019928,
+        "value": "Nguyễn",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "phone",
+        "start": 52,
+        "end": 62,
+        "confidence_entity": 0.9888750314712524,
+        "value": "0901234567",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tôi đang cần thông tin về nhà xưởng sản xuất",
+    "entities": [
+      {
+        "start": 26,
+        "end": 44,
+        "value": "nhà xưởng sản xuất",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 26,
+        "end": 35,
+        "confidence_entity": 0.838118314743042,
+        "value": "nhà xưởng",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tư vấn giúp về nhà thép khung nhẹ",
+    "entities": [
+      {
+        "start": 15,
+        "end": 33,
+        "value": "nhà thép khung nhẹ",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 15,
+        "end": 29,
+        "confidence_entity": 0.5768110156059265,
+        "value": "nhà thép khung",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Bạn có kinh nghiệm thiết kế nhà xưởng lớn không?",
+    "entities": [
+      {
+        "start": 28,
+        "end": 41,
+        "value": "nhà xưởng lớn",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 28,
+        "end": 37,
+        "confidence_entity": 0.8145390152931213,
+        "value": "nhà xưởng",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tôi là Lê Thị Lan và số điện thoại của tôi là 0961234567.",
+    "entities": [
+      {
+        "start": 7,
+        "end": 17,
+        "value": "Lê Thị Lan",
+        "entity": "name"
+      },
+      {
+        "start": 46,
+        "end": 56,
+        "value": "0961234567",
+        "entity": "phone"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 10,
+        "end": 17,
+        "confidence_entity": 0.9981743097305298,
+        "value": "Thị Lan",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "phone",
+        "start": 46,
+        "end": 56,
+        "confidence_entity": 0.9298411011695862,
+        "value": "0961234567",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Bạn có thể tư vấn cho tôi về việc xây nhà kho không",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 38,
+        "end": 41,
+        "confidence_entity": 0.9721305966377258,
+        "value": "nhà",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Công trình cảu tôi là nhà thép tiền chế",
+    "entities": [
+      {
+        "start": 22,
+        "end": 30,
+        "value": "nhà thép",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 22,
+        "end": 39,
+        "confidence_entity": 0.9979221224784851,
+        "value": "nhà thép tiền chế",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tôi muốn xây dựng một nhà thép cho công ty",
+    "entities": [
+      {
+        "start": 22,
+        "end": 30,
+        "value": "nhà thép",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 22,
+        "end": 30,
+        "confidence_entity": 0.9983501434326172,
+        "value": "nhà thép",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "category",
+        "start": 35,
+        "end": 39,
+        "confidence_entity": 0.9997041821479797,
+        "value": "công",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Đề xuất thiết kế phù hợp cho nhà thép",
+    "entities": [
+      {
+        "start": 29,
+        "end": 37,
+        "value": "nhà thép",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 3,
+        "end": 7,
+        "confidence_entity": 0.7710252404212952,
+        "value": "xuất",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "category",
+        "start": 21,
+        "end": 24,
+        "confidence_entity": 0.998044490814209,
+        "value": "hợp",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "category",
+        "start": 29,
+        "end": 37,
+        "confidence_entity": 0.9619554281234741,
+        "value": "nhà thép",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tôi tên là Mai Lan, số điện thoại của tôi là 0912345678.",
+    "entities": [
+      {
+        "start": 11,
+        "end": 18,
+        "value": "Mai Lan",
+        "entity": "name"
+      },
+      {
+        "start": 45,
+        "end": 55,
+        "value": "0912345678",
+        "entity": "phone"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 15,
+        "end": 18,
+        "confidence_entity": 0.9989820122718811,
+        "value": "Lan",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "phone",
+        "start": 45,
+        "end": 55,
+        "confidence_entity": 0.989593505859375,
+        "value": "0912345678",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tôi cần xây dựng một nhà xưởng công nghiệp",
+    "entities": [
+      {
+        "start": 21,
+        "end": 42,
+        "value": "nhà xưởng công nghiệp",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 21,
+        "end": 30,
+        "confidence_entity": 0.7695906162261963,
+        "value": "nhà xưởng",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Xin báo giá thiết kế nhà thép tiền chế",
+    "entities": [
+      {
+        "start": 21,
+        "end": 38,
+        "value": "nhà thép tiền chế",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 21,
+        "end": 29,
+        "confidence_entity": 0.6542766690254211,
+        "value": "nhà thép",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tôi muốn tìm giải pháp cho nhà xưởng công nghiệp nhỏ",
+    "entities": [
+      {
+        "start": 27,
+        "end": 52,
+        "value": "nhà xưởng công nghiệp nhỏ",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 27,
+        "end": 36,
+        "confidence_entity": 0.944383978843689,
+        "value": "nhà xưởng",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "category",
+        "start": 49,
+        "end": 52,
+        "confidence_entity": 0.9978110194206238,
+        "value": "nhỏ",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Bạn có thể gọi tôi là Trần Thị Bích và đây là số điện thoại của tôi:  0934567890 .",
+    "entities": [
+      {
+        "start": 22,
+        "end": 35,
+        "value": "Trần Thị Bích",
+        "entity": "name"
+      },
+      {
+        "start": 69,
+        "end": 81,
+        "value": " 0934567890 ",
+        "entity": "phone"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 22,
+        "end": 30,
+        "confidence_entity": 0.9947665929794312,
+        "value": "Trần Thị",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "phone",
+        "start": 70,
+        "end": 80,
+        "confidence_entity": 0.9938591122627258,
+        "value": "0934567890",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Tên của tôi là Hoàng Minh Tuấn và số điện thoại của tôi là 0949876543.",
+    "entities": [
+      {
+        "start": 15,
+        "end": 30,
+        "value": "Hoàng Minh Tuấn",
+        "entity": "name"
+      },
+      {
+        "start": 59,
+        "end": 69,
+        "value": "0949876543",
+        "entity": "phone"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 21,
+        "end": 25,
+        "confidence_entity": 0.9911580681800842,
+        "value": "Minh",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "phone",
+        "start": 59,
+        "end": 69,
+        "confidence_entity": 0.9973714351654053,
+        "value": "0949876543",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Địa chỉ ở quận 9 hả",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "phone",
+        "start": 15,
+        "end": 16,
+        "confidence_entity": 0.5991533994674683,
+        "value": "9",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Tôi muốn xây dựng một nhà thép tôn lợp mái",
+    "entities": [
+      {
+        "start": 22,
+        "end": 42,
+        "value": "nhà thép tôn lợp mái",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 22,
+        "end": 34,
+        "confidence_entity": 0.9203718900680542,
+        "value": "nhà thép tôn",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "category",
+        "start": 39,
+        "end": 42,
+        "confidence_entity": 0.9795774817466736,
+        "value": "mái",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

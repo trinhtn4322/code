@@ -1,119 +1,9 @@
-version: "3.0"
+version: "3.1"
 
 nlu:
 
-#Entities
-  - intent: TimKiemSanPham
-    examples: |
-      # Câu hỏi thông thường về sản phẩm
-      - Tôi muốn tìm sản phẩm [gạch](product_name)
-      - Có loại [thép](product_type) nào giá dưới [2 triệu](price_range)?
-      - Cho tôi xem các [xà gồ](product_type) giá từ [3 triệu](price_range) đến [5 triệu](price_range)
 
-      # Câu hỏi liên quan đến sản phẩm với yêu cầu về giá cụ thể
-      - Tôi cần tìm bàn [gỗ tự nhiên](product_name) giá khoảng [2 triệu](price_range)
-      - Tìm giúp tôi các loại [cửa sắt](product_name) giá dưới [3 triệu](price_range)
-      - Bạn có bán [máy lạnh](product_name) nào không?
-
-      # Câu hỏi yêu cầu giá và sản phẩm cụ thể
-      - Tôi muốn mua [bàn làm việc](product_name) giá từ [1 triệu đến 2 triệu](price_range)
-      - Có các loại [ghế sofa](product_name) nào [dưới 5 triệu](price_range)?
-      - [Bồn cầu](product_name) loại nào giá khoảng [3 triệu](price_range)?
-
-      # Câu hỏi yêu cầu loại sản phẩm
-      - Các loại [xà gồ](product_name) bạn có là gì?
-      - Bạn có các loại [vách ngăn](product_name) nào không?
-      - Sản phẩm [vật liệu xây dựng](product_type) này có giá bao nhiêu?
-
-      # Câu hỏi yêu cầu sản phẩm với mức giá ước tính
-      - Tôi cần tìm bàn [gỗ tự nhiên](product_name) giá khoảng [1 đến 2 triệu](price_range)
-      - Tôi cần tìm bàn(product_type) giá khoảng [2 triệu đến 5 triệu](price_range)
-      - Tôi cần tìm bàn(product_type) [lớn hơn 2 triệu](price_range)
-
-      # Câu hỏi thông thường nhưng thêm yêu cầu cụ thể về giá
-      - Tôi cần mua [gạch](product_name) cho công trình giá dưới [3 triệu](price_range)
-
-      # Câu hỏi yêu cầu tìm sản phẩm với mức giá đặc biệt
-      - Bạn có loại [cửa sắt](product_name) nào giá từ [2 triệu đến 4 triệu](price_range)?
-      - Tìm cho tôi các [máy lạnh](product_name) giá từ [1 triệu đến 3 triệu](price_range)
-
-      # Câu hỏi tìm sản phẩm với yêu cầu đơn giản
-      - Tôi muốn mua [bàn ăn](product_name) giá dưới [3 triệu](price_range)
-      - Có loại [bồn cầu](product_name) nào giá [dưới 2 triệu](price_range)?
-
-      # Câu hỏi tìm các sản phẩm có giá dưới mức nào đó
-      - Bạn có các loại [gạch](product_name) nào [dưới 5 triệu](price_range)?
-
-      # Câu hỏi tìm các sản phẩm với mức giá cụ thể
-      - Tìm giúp tôi các loại [xà gồ](product_type) giá từ [1 triệu đến 3 triệu](price_range)
-      - Bạn có bán [ghế sofa](product_name) nào [dưới 4 triệu](price_range)?
-      - Tôi cần tìm bàn [gỗ tự nhiên](product_name) giá khoảng [5 triệu](price_range)
-      - Các loại [vách ngăn](product_name) bạn có là gì? Giá khoảng [2 triệu](price_range)
-      - Bạn có loại [bàn làm việc](product_name) nào [dưới 3 triệu](price_range)?
-
-
-
-  - intent: ThongTinSanPham
-    examples: |
-      # Câu hỏi yêu cầu thông tin về kích thước hoặc đặc điểm sản phẩm
-      - [Thép loại II](product_name) có kích thước bao nhiêu?
-      - Mặt hàng [gạch](product_name) này giá bao nhiêu?
-      - Sản phẩm [thép loại I](product_name) có màu gì?
-      - Bàn [gỗ tự nhiên](product_name) này có kích thước như thế nào?
-      
-      # Câu hỏi về khả năng và tính năng của sản phẩm
-      - [Xà gồ](product_name) có thể chịu tải trọng bao nhiêu?
-      - Giá của [bàn làm việc](product_name) này là bao nhiêu?
-      - Bạn có thể cho tôi biết thông số kỹ thuật của sản phẩm [gạch ceramic](product_name)?
-      
-      # Câu hỏi yêu cầu thông tin về công suất hoặc màu sắc
-      - [Máy lạnh](product_name) này công suất bao nhiêu?
-      - Sản phẩm [bàn học sinh](product_name) này có bao nhiêu màu sắc?
-      - Sản phẩm [gạch](product_name) này có thể sử dụng cho những công trình nào?
-      
-      # Câu hỏi về độ bền hoặc chất liệu sản phẩm
-      - [Cửa sắt](product_name) này có độ bền bao lâu?
-      - [Vách ngăn](product_name) này có chất liệu gì?
-      
-      # Câu hỏi về thông số sản phẩm một cách tổng quát
-      - Thông số của [bồn cầu](product_name) này như thế nào?
-      
-      # Câu hỏi thêm chi tiết về tính năng hoặc đặc điểm sản phẩm
-      - [Thép loại II](product_name) này có chịu được nhiệt độ cao không?
-      - Có thể dùng [gạch](product_name) này cho các công trình ngoài trời không?
-      
-      # Câu hỏi liên quan đến sản phẩm theo thông số kỹ thuật cụ thể
-      - [Xà gồ](product_name) này chịu được tải trọng tối đa là bao nhiêu?
-      - Sản phẩm [bàn làm việc](product_name) này có kích thước chiều dài bao nhiêu?
-      
-      # Câu hỏi yêu cầu các đặc tính cụ thể
-      - Màu sắc của [bàn học sinh](product_name) này như thế nào?
-      - Bạn có thể cho tôi biết những thông tin về [gạch](product_name) này không?
-      - Thông số về [máy lạnh](product_name) này là gì?
-      
-      # Câu hỏi yêu cầu độ bền hoặc tính năng bảo hành
-      - [Cửa sắt](product_name) này có bảo hành bao lâu?
-      - Chất liệu của [vách ngăn](product_name) này có bền không?
-      
-      # Câu hỏi cụ thể về các loại sản phẩm
-      - Sản phẩm [bàn làm việc](product_name) này có chức năng gì đặc biệt không?
-      - Bạn có thể cho tôi biết mức giá và thông số kỹ thuật của [gạch](product_name) này không?
-      
-      # Câu hỏi yêu cầu sự so sánh
-      - [Thép loại II](product_name) này khác gì so với [thép loại I](product_name)?
-      - [Bàn học sinh](product_name) này so với các sản phẩm khác thì sao?
-      
-      # Câu hỏi tìm hiểu về ứng dụng hoặc tính năng sử dụng
-      - [Gạch](product_name) này có thể dùng cho công trình nào?
-      - Cửa sắt này có dùng được cho cả nội thất không?
-      
-      # Câu hỏi yêu cầu thông tin về đặc tính vật lý
-      - [Bồn cầu](product_name) này có trọng lượng bao nhiêu?
-      - Độ bền của [vách ngăn](product_name) này có tốt không?
-  
-  
-
-#Greet
+##Greet
   - intent: greet
     examples: |
       - Ê
@@ -124,21 +14,14 @@ nlu:
       - Bạn còn đó không?
       - Alo
       - Có ai không?
-      - Tôi cần hổ trợ
-      - Giúp tôi với
-      - Tôi cần hổ trợ
       - Lô
       - Này bạn
       - Chào buổi sáng!
       - Chào buổi tối!
       - Chào anh/chị
       - Chào em
-      - Xin chào, bạn có thể giúp tôi không?
-      - Chào, tôi đang tìm kiếm thông tin
-      - Mình có thể hỏi một số câu hỏi không?
-      - Bạn có thể hỗ trợ tôi không?
       - Chào, mình cần trợ giúp.
-# Introduction
+## Introduction
   - intent: bot_introduction
     examples: |
       - Bạn là ai?
@@ -156,44 +39,44 @@ nlu:
       - Tại sao bạn lại tồn tại?
       - Bạn làm việc cho ai?
       - Bạn là hệ thống gì?
-
-  - intent: company_introduction
-    examples: |
-      - Công ty của bạn làm gì?
-      - Bạn làm trong ngành nào?
-      - Công ty của bạn chuyên về lĩnh vực gì?
-      - Bạn có thể nói về công ty bạn không?
-      - Công ty của bạn có phải công ty xây dựng không?
-      - Công ty này cung cấp dịch vụ gì?
-      - Bạn có thể giới thiệu về công ty của mình không?
-      - Bạn làm việc cho công ty nào?
-      - Công ty của bạn có đội ngũ như thế nào?
-      - Công ty của bạn đã hoạt động bao lâu rồi?
-      - Công ty này có uy tín không?
-      - Công ty của bạn có những dự án nào?
-      - Công ty này có chuyên làm nhà ở không?
-      - Bạn có thể nói một chút về công ty không?
-      - Công ty của bạn có dự án nổi bật nào không?
-      - Công ty này có làm công trình lớn không?
-      - Bạn có thể nói về các dịch vụ công ty cung cấp?
-      - Công ty này làm các công trình như thế nào?
-      - Bạn có thể giới thiệu về các công trình công ty đã làm không?
-      - Công ty của bạn có các dịch vụ tư vấn không?
-      - Công ty Trung Lâm có dịch vụ gì đặc biệt?
-      - Bạn có thể chia sẻ một số thông tin về công ty Trung Lâm không?
-      - Công ty Trung Lâm có bao nhiêu năm kinh nghiệm trong ngành?
-      - Bạn có thể cho tôi biết về lịch sử hình thành của công ty Trung Lâm?
-      - Công ty của bạn có các sản phẩm nào nổi bật?
-      - Công ty Trung Lâm có các đối tác lớn nào không?
-      - Trung Lâm có sản phẩm gì phù hợp với công trình xây dựng không?
-      - Công ty Trung Lâm có cam kết chất lượng không?
-      - Trung Lâm có chi nhánh ở những thành phố nào?
-      - Công ty của bạn có kế hoạch mở rộng không?
-      - Bạn có thể cho tôi biết về các dự án lớn mà Trung Lâm đã thực hiện không?
-      - Công ty Trung Lâm có đội ngũ kỹ sư không?
-      - Công ty Trung Lâm có phải là công ty cung cấp thép cho các dự án xây dựng lớn không?
-      - Trung Lâm có tham gia vào các hội chợ triển lãm không?
-
+#
+#  # - intent: company_introduction
+#  #   examples: |
+#  #     - Công ty của bạn làm gì?
+#  #     - Bạn làm trong ngành nào?
+#  #     - Công ty của bạn chuyên về lĩnh vực gì?
+#  #     - Bạn có thể nói về công ty bạn không?
+#  #     - Công ty của bạn có phải công ty xây dựng không?
+#  #     - Công ty này cung cấp dịch vụ gì?
+#  #     - Bạn có thể giới thiệu về công ty của mình không?
+#  #     - Bạn làm việc cho công ty nào?
+#  #     - Công ty của bạn có đội ngũ như thế nào?
+#  #     - Công ty của bạn đã hoạt động bao lâu rồi?
+#  #     - Công ty này có uy tín không?
+#  #     - Công ty của bạn có những dự án nào?
+#  #     - Công ty này có chuyên làm nhà ở không?
+#  #     - Bạn có thể nói một chút về công ty không?
+#  #     - Công ty của bạn có dự án nổi bật nào không?
+#  #     - Công ty này có làm công trình lớn không?
+#  #     - Bạn có thể nói về các dịch vụ công ty cung cấp?
+#  #     - Công ty này làm các công trình như thế nào?
+#  #     - Bạn có thể giới thiệu về các công trình công ty đã làm không?
+#  #     - Công ty của bạn có các dịch vụ tư vấn không?
+#  #     - Công ty Trung Lâm có dịch vụ gì đặc biệt?
+#  #     - Bạn có thể chia sẻ một số thông tin về công ty Trung Lâm không?
+#  #     - Công ty Trung Lâm có bao nhiêu năm kinh nghiệm trong ngành?
+#  #     - Bạn có thể cho tôi biết về lịch sử hình thành của công ty Trung Lâm?
+#  #     - Công ty của bạn có các sản phẩm nào nổi bật?
+#  #     - Công ty Trung Lâm có các đối tác lớn nào không?
+#  #     - Trung Lâm có sản phẩm gì phù hợp với công trình xây dựng không?
+#  #     - Công ty Trung Lâm có cam kết chất lượng không?
+#  #     - Trung Lâm có chi nhánh ở những thành phố nào?
+#  #     - Công ty của bạn có kế hoạch mở rộng không?
+#  #     - Bạn có thể cho tôi biết về các dự án lớn mà Trung Lâm đã thực hiện không?
+#  #     - Công ty Trung Lâm có đội ngũ kỹ sư không?
+#  #     - Công ty Trung Lâm có phải là công ty cung cấp thép cho các dự án xây dựng lớn không?
+#  #     - Trung Lâm có tham gia vào các hội chợ triển lãm không?
+#
   - intent: bot_capabilities
     examples: |
       - Bạn có thể làm gì?
@@ -216,7 +99,7 @@ nlu:
       - Bạn có thể cung cấp thông tin gì cho tôi?
       - Bạn có thể trợ giúp tôi trong công việc gì không?
       - Bạn có thể làm gì trong ngành xây dựng?
-
+#
   - intent: bot_how_to_use
     examples: |
       - Cách gửi ảnh là gì?
@@ -260,7 +143,7 @@ nlu:
       - Tôi thấy bạn làm hơi ít
       - Giới hạn của bạn là gì
       - Bạn tính diện tích và gì nửa không?
-  # Send Image
+#  # Send Image
   - intent: send_image
     examples: |
       - Tôi muốn gửi hình ảnh bản vẽ.
@@ -285,17 +168,17 @@ nlu:
       - Đây là hình của tôi
       - Ảnh của tôi nè
       - Tôi gửi ảnh rồi
-
+#
   - intent: calculate_price
     examples: |
+      - Tôi muốn tính tiền
+      - Tôi muốn xem giá
+      - Tôi cần tính tiền
       - Bạn có thể tính tiền cho tôi không?
       - Tôi muốn biết giá cho bản vẽ này.
-      - Xin cho tôi biết giá dự kiến.
       - Bạn có thể báo giá tiền không?
       - Tính giá tiền giúp tôi nhé.
       - Bạn có thể đưa ra báo giá không?
-      - Giá của bản vẽ này là bao nhiêu?
-      - Bạn có thể cung cấp giá tiền cho dịch vụ này không?
       - Tôi cần biết chi phí cho bản vẽ này.
       - Bạn có thể ước tính chi phí cho tôi không?
       - Bạn có thể báo giá cho bản vẽ này không?
@@ -303,42 +186,31 @@ nlu:
       - Mất bao lâu để có giá cho bản vẽ này?
       - Bạn có thể cung cấp mức giá dựa trên bản vẽ này không?
       - Báo giá cho tôi được không?
-      - Chiều dài [100m](length) chiều rộng [50m](width)
-      - Chiều dài [25m](length) chiều rộng [35m](width)
-      - Chiều dài [60m](length) chiều rộng [15m](width)
-      - Chiều dài [80m](length) chiều rộng [40m](width)
-      - Chiều dài [45m]a(length) chiều rộng [20m](width)
-      - Dài [60m](length) rộng [10m](width)
-      - Dài [50m](length) rộng [25m](width)
-      - Dài [30m](length) rộng [20m](width)
-      - Dài [90m](length) rộng [50m](width)
-      - Dài [75m](length) rộng [15m](width)
-      - Dài [100m](length) rộng [70m](width)
-
-  - intent: bot_recommendations
-    examples: |
-      - Tình trạng của bản vẽ như thế nào?
-      - Bản vẽ đang được xử lý không?
-      - Có thông tin gì về bản vẽ không?
-      - Bạn có đề xuất gì cho bản vẽ không?
-      - Bạn có lời khuyên gì về bản vẽ này không?
-      - Bản vẽ có vấn đề gì không?
-      - Có điểm gì cần cải thiện trong bản vẽ này không?
-      - Bạn có nhận xét gì về bản vẽ không?
-      - Bản vẽ này có phù hợp không?
-      - Bạn có gợi ý nào cho bản vẽ này không?
-      - Có cách nào tối ưu hóa bản vẽ không?
-      - Bạn có thể đưa ra lời khuyên gì cho bản vẽ này không?
-      - Bạn có thể nhận xét về chất lượng bản vẽ không?
-      - Bản vẽ này có thể cải tiến thế nào?
-      - Bạn có nhận thấy điều gì cần thay đổi trong bản vẽ không?
-      - Bản vẽ ổn không
-      - Tôi cần làm gì
-      - Bạn có gợi ý gì không
-      - Ngoài ra còn gợi ý gì không
-      - Tôi cần gợi ý về bản vẽ
- 
-
+#
+#  - intent: bot_recommendations
+#    examples: |
+#      - Tình trạng của bản vẽ như thế nào?
+#      - Bản vẽ đang được xử lý không?
+#      - Có thông tin gì về bản vẽ không?
+#      - Bạn có đề xuất gì cho bản vẽ không?
+#      - Bạn có lời khuyên gì về bản vẽ này không?
+#      - Bản vẽ có vấn đề gì không?
+#      - Có điểm gì cần cải thiện trong bản vẽ này không?
+#      - Bạn có nhận xét gì về bản vẽ không?
+#      - Bản vẽ này có phù hợp không?
+#      - Bạn có gợi ý nào cho bản vẽ này không?
+#      - Có cách nào tối ưu hóa bản vẽ không?
+#      - Bạn có thể đưa ra lời khuyên gì cho bản vẽ này không?
+#      - Bạn có thể nhận xét về chất lượng bản vẽ không?
+#      - Bản vẽ này có thể cải tiến thế nào?
+#      - Bạn có nhận thấy điều gì cần thay đổi trong bản vẽ không?
+#      - Bản vẽ ổn không
+#      - Tôi cần làm gì
+#      - Bạn có gợi ý gì không
+#      - Ngoài ra còn gợi ý gì không
+#      - Tôi cần gợi ý về bản vẽ
+#
+#
   - intent: detect_encoded_string
     examples: |
       - AgACAgUAAxkBAAP_ZysgqQa8t84ncRpn9iP3bJb52zYAAse-MRs8gFhV4hysWwTxiXUBAAMCAAN3AAM2BA
@@ -359,7 +231,7 @@ nlu:
       - Z2W9Q1N7T0m6X5L3yP4J9R0K8V1g9f3D0
       - V8R3Y0g1Q9L2X5pF7T9J0mK4N3wZ1D8o3
       - L1N9Q5T2fX7m8R4pK3Y0V9J6g3Z2D1w7
- # basic
+# # basic
   - intent: goodbye
     examples: |
       - Tạm biệt!
@@ -382,7 +254,7 @@ nlu:
       - Chúc bạn sức khỏe!
       - Mong gặp lại bạn trong lần sau!
       - Tạm biệt, hẹn gặp lại sớm!
-
+#
   - intent: thanks
     examples: |
       - Cảm ơn bạn!
@@ -405,9 +277,38 @@ nlu:
       - Cảm ơn bạn vì đã giải quyết vấn đề.
       - Cảm ơn bạn, tôi rất trân trọng điều đó!
       - Tôi cảm thấy rất biết ơn bạn.
+  - intent: book_consult
+    examples: |
+      - Tên tôi là [Nguyễn Văn A](name) và số điện thoại của tôi là [0901234567](phone).
+      - Tôi tên là [Mai Lan](name), số điện thoại của tôi là [0912345678](phone).
+      - Bạn có thể gọi tôi là [Trần Thị Bích](name) và đây là số điện thoại của tôi: [ 0934567890 ](phone).
+      - Tên của tôi là [Hoàng Minh Tuấn](name) và số điện thoại của tôi là [0949876543](phone).
+      - Gọi tôi là [Phan Quang Hieu](name), số điện thoại của tôi là [0987654321](phone).
+      - Tôi là [Lê Thị Lan](name) và số điện thoại của tôi là [0961234567](phone).
+      - Tên tôi là [Dương Thanh Sơn](name), số điện thoại của tôi là [0901112233](phone).
+      - Mình tên là [Quang Hieu](name) và số điện thoại của mình là [0922334455](phone).
+      - Tên của tôi là [Minh Hieu](name) và số điện thoại của tôi là [0988776655](phone).
+      - Tên tôi là [Ngọc Lan](name) và số điện thoại của tôi là [0977889900](phone).
+      - Bạn có thể gọi tôi là [Trần Quang](name) và số điện thoại của tôi là [0911223344](phone).
+      - Số điện thoại của tôi là [0901234567](phone).
+      - Đây là số điện thoại của tôi: [0912345678](phone).
+      - Bạn có thể liên hệ với tôi qua số [0934567890](phone).
+      - Liên hệ tôi qua số điện thoại [0949876543](phone).
+      - Số điện thoại của tôi là [0987654321](phone).
+      - Gọi tôi qua số [0912345678](phone).
+      - Đây là số điện thoại của tôi: [0123456789](phone).
+      - Số điện thoại của tôi là [0976543210](phone).
 
   - intent: affirm
     examples: |
+      - Có
+      - Chắc chắn
+      - Ừ
+      - Ừa
+      - Ờ
+      - Ok
+      - Ùm
+      - Yes
       - Được rồi
       - Ok
       - Tôi hiểu rồi
@@ -428,32 +329,32 @@ nlu:
       - Chính xác
       - Tôi đã sẵn sàng
       - Ok, cảm ơn
-
-  - intent: feed_back
-    examples: |
-      - Tôi muốn cho bạn biết về trải nghiệm của mình.
-      - Tôi có phản hồi về dịch vụ.
-      - Tôi muốn góp ý cho dịch vụ.
-      - Làm sao để đánh giá bạn?
-      - Tôi muốn điền khảo sát.
-      - Tôi muốn đánh giá.
-      - Tôi muốn chia sẻ cảm nhận của mình.
-      - Bạn có thể nhận phản hồi từ tôi không?
-      - Tôi có một số góp ý cho dịch vụ của bạn.
-      - Tôi muốn đưa ra ý kiến về dịch vụ.
-      - Tôi muốn phản hồi về trải nghiệm sử dụng.
-      - Bạn có nhận được đánh giá của tôi không?
-      - Tôi có một số nhận xét về dịch vụ của bạn.
-      - Tôi muốn phản hồi về trải nghiệm của mình.
-      - Tôi muốn cung cấp một số ý kiến cho dịch vụ.
-      - Làm sao để gửi phản hồi về dịch vụ?
-      - Tôi có một số điều muốn chia sẻ với bạn.
-      - Bạn có thể lắng nghe phản hồi từ tôi không?
-      - Tôi muốn cho bạn biết một số ý kiến của tôi.
-      - Cách nào để bạn nhận được ý kiến của tôi?
-      - Tôi muốn đánh giá dịch vụ của bạn.
-      - Bạn có thể nhận được lời góp ý của tôi không?
-
+#
+#  # - intent: feed_back
+#  #   examples: |
+#  #     - Tôi muốn cho bạn biết về trải nghiệm của mình.
+#  #     - Tôi có phản hồi về dịch vụ.
+#  #     - Tôi muốn góp ý cho dịch vụ.
+#  #     - Làm sao để đánh giá bạn?
+#  #     - Tôi muốn điền khảo sát.
+#  #     - Tôi muốn đánh giá.
+#  #     - Tôi muốn chia sẻ cảm nhận của mình.
+#  #     - Bạn có thể nhận phản hồi từ tôi không?
+#  #     - Tôi có một số góp ý cho dịch vụ của bạn.
+#  #     - Tôi muốn đưa ra ý kiến về dịch vụ.
+#  #     - Tôi muốn phản hồi về trải nghiệm sử dụng.
+#  #     - Bạn có nhận được đánh giá của tôi không?
+#  #     - Tôi có một số nhận xét về dịch vụ của bạn.
+#  #     - Tôi muốn phản hồi về trải nghiệm của mình.
+#  #     - Tôi muốn cung cấp một số ý kiến cho dịch vụ.
+#  #     - Làm sao để gửi phản hồi về dịch vụ?
+#  #     - Tôi có một số điều muốn chia sẻ với bạn.
+#  #     - Bạn có thể lắng nghe phản hồi từ tôi không?
+#  #     - Tôi muốn cho bạn biết một số ý kiến của tôi.
+#  #     - Cách nào để bạn nhận được ý kiến của tôi?
+#  #     - Tôi muốn đánh giá dịch vụ của bạn.
+#  #     - Bạn có thể nhận được lời góp ý của tôi không?
+#
   - intent: contact
     examples: |
       - Địa chỉ ở quận 9 hả
@@ -501,5 +402,72 @@ nlu:
       - Không có gì cần thay đổi.
       - Không cần sự giúp đỡ của bạn.
       - Tôi không muốn tham gia.
+      - Không
+      - No
+      - K
+      - Ko
+      - hong
+#  ---------------
+  - intent: consult
+    examples: |
+      - Tôi muốn tư vấn
+      - Bạn có thể tư vấn cho tôi về việc xây nhà kho không
+      - Tôi đang muốn xây một nhà kho
+      - Tôi đang làm một dự án bạn tư vấn tôi nhé
+      - Tôi cần bạn giúp đở
+      - bạn có thể giúp tôi không?
+      - Mình có thể hỏi một số câu hỏi không?
+      - Bạn có thể hỗ trợ tôi không?
+      - Tôi cần hổ trợ
+      - Giúp tôi với
+      - Tôi cần hổ trợ
+
+  - intent: inform_category
+    examples: |
+      - Công trình cảu tôi là [nhà thép](category) tiền chế
+      - Công trình tôi dự định xây là [nhà xưởng](category)
+      - Loại công trình là [nhà thép](category)
+      - Tôi cần xây [nhà xưởng](category)
+      - Tôi muốn thiết kế [nhà thép](category)
+      - Hãy báo giá cho [nhà thép tôn](category)
+      - Tư vấn về [nhà thép](category)
+      - Tôi quan tâm đến [nhà xưởng](category)
+      - Xây dựng [nhà thép tole](category)
+      - Tôi cần xây dựng một [nhà xưởng công nghiệp](category)
+      - Hãy tư vấn giải pháp cho [nhà thép](category)
+      - Dự án của tôi là [nhà thép tôn](category)
+      - Tôi đang tìm hiểu về [nhà thép tole](category)
+      - Bạn có thể thiết kế giúp tôi một [nhà xưởng](category) không?
+      - Xin báo giá thiết kế [nhà thép tiền chế](category)
+      - Tôi đang cần thông tin về [nhà xưởng sản xuất](category)
+      - Bạn có thể tư vấn thêm về [nhà thép tôn](category) không?
+      - Tôi muốn xây dựng một [nhà thép](category) cho công ty
+      - Tôi muốn biết chi phí cho một [nhà thép tole](category)
+      - Tư vấn giúp tôi lựa chọn giữa [nhà thép tôn](category) và [nhà xưởng](category)
+      - Tôi đang lập kế hoạch cho một [nhà xưởng nhỏ](category)
+      - Tôi cần báo giá nhanh cho [nhà thép](category)
+      - Cho tôi biết thêm thông tin về [nhà thép khung tole](category)
+      - Tôi muốn tìm giải pháp cho [nhà xưởng công nghiệp nhỏ](category)
+      - Tư vấn giúp về [nhà thép khung nhẹ](category)
+      - Hãy cho tôi biết thêm về [nhà thép mái tole](category)
+      - Tôi muốn xây dựng một [nhà thép tôn lợp mái](category)
+      - Bạn có kinh nghiệm thiết kế [nhà xưởng lớn](category) không?
+      - Đề xuất thiết kế phù hợp cho [nhà thép](category)
 
 
+  - synonym: nhà xưởng
+    examples: |
+      - nhà xưởng công nghiệp
+      - xưởng sản xuất
+
+  - synonym: nhà thép
+    examples: |
+      - khung thép
+      - nhà khung thép
+
+  - synonym: nhà thép tôn
+    examples: |
+      - nhà thép tôn
+      - nhà thép mái tôn
+      - nhà khung thép tole
+      - nhà thép mái tole

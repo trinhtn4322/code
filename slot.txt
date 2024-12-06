@@ -1,0 +1,7 @@
+type:nhà thép
+width:5m
+width:5m
+length:10m
+height:2
+address:nhà
+weight:1 tấn

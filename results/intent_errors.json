@@ -1,0 +1,498 @@
+[
+  {
+    "text": "Hi, tôi có thể hỏi bạn điều gì?",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.8771606087684631
+    }
+  },
+  {
+    "text": "Bây giờ tôi phải làm sao?",
+    "intent": "bot_limitations",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.7852091789245605
+    }
+  },
+  {
+    "text": "Tính toán tiền cho bản vẽ giúp tôi.",
+    "intent": "calculate_price",
+    "intent_prediction": {
+      "name": "send_image",
+      "confidence": 0.6245938539505005
+    }
+  },
+  {
+    "text": "Chính xác",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "calculate_price",
+      "confidence": 0.628068208694458
+    }
+  },
+  {
+    "text": "Làm sao để tôi có thể gọi cho bạn?",
+    "intent": "contact",
+    "intent_prediction": {
+      "name": "bot_how_to_use",
+      "confidence": 0.6549643278121948
+    }
+  },
+  {
+    "text": "Tôi sẽ tự làm được.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.6515366435050964
+    }
+  },
+  {
+    "text": "Tôi đang muốn xây một nhà kho",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "inform_category",
+      "confidence": 0.8298399448394775
+    }
+  },
+  {
+    "text": "Tôi đang làm một dự án bạn tư vấn tôi nhé",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "inform_category",
+      "confidence": 0.6244082450866699
+    }
+  },
+  {
+    "text": "Lô",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.6833381056785583
+    }
+  },
+  {
+    "text": "Chào, mình cần trợ giúp.",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "consult",
+      "confidence": 0.26536455750465393
+    }
+  },
+  {
+    "text": "Bạn làm về lĩnh vực gì?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.7322977781295776
+    }
+  },
+  {
+    "text": "Bạn là hệ thống gì?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.5666621923446655
+    }
+  },
+  {
+    "text": "Bạn có thể hỗ trợ tôi như thế nào?",
+    "intent": "bot_capabilities",
+    "intent_prediction": {
+      "name": "consult",
+      "confidence": 0.4147847294807434
+    }
+  },
+  {
+    "text": "Tính diện tích bản vẽ này giúp tôi.",
+    "intent": "send_image",
+    "intent_prediction": {
+      "name": "bot_limitations",
+      "confidence": 0.9926156997680664
+    }
+  },
+  {
+    "text": "Có",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.787272036075592
+    }
+  },
+  {
+    "text": "Ùm",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.8564690947532654
+    }
+  },
+  {
+    "text": "Tôi có thể gửi thư đến đâu?",
+    "intent": "contact",
+    "intent_prediction": {
+      "name": "send_image",
+      "confidence": 0.5932116508483887
+    }
+  },
+  {
+    "text": "Bạn có chat trực tuyến không?",
+    "intent": "contact",
+    "intent_prediction": {
+      "name": "bot_introduction",
+      "confidence": 0.27037230134010315
+    }
+  },
+  {
+    "text": "Tôi từ chối.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "bot_how_to_use",
+      "confidence": 0.43244314193725586
+    }
+  },
+  {
+    "text": "Tôi đã đủ thông tin rồi.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.992929995059967
+    }
+  },
+  {
+    "text": "hong",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.8275299072265625
+    }
+  },
+  {
+    "text": "Mình có thể hỏi một số câu hỏi không?",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.7000608444213867
+    }
+  },
+  {
+    "text": "Bạn còn đó không?",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.9548465609550476
+    }
+  },
+  {
+    "text": "Tại sao bạn lại tồn tại?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.9621056914329529
+    }
+  },
+  {
+    "text": "Bạn có phải AI không?",
+    "intent": "bot_capabilities",
+    "intent_prediction": {
+      "name": "bot_introduction",
+      "confidence": 0.9071403741836548
+    }
+  },
+  {
+    "text": "Bạn có thể nói về nhiệm vụ của mình không?",
+    "intent": "bot_capabilities",
+    "intent_prediction": {
+      "name": "bot_introduction",
+      "confidence": 0.69593346118927
+    }
+  },
+  {
+    "text": "Bạn có thể hướng dẫn tôi sử dụng không?",
+    "intent": "bot_how_to_use",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.5473862886428833
+    }
+  },
+  {
+    "text": "Tôi có 1 hình ảnh.",
+    "intent": "send_image",
+    "intent_prediction": {
+      "name": "book_consult",
+      "confidence": 0.8623288869857788
+    }
+  },
+  {
+    "text": "Bạn có thể giúp tôi với bản vẽ này không?",
+    "intent": "send_image",
+    "intent_prediction": {
+      "name": "consult",
+      "confidence": 0.48435962200164795
+    }
+  },
+  {
+    "text": "Tôi đã sẵn sàng",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.7556184530258179
+    }
+  },
+  {
+    "text": "Có chi nhánh nước ngoài không?",
+    "intent": "contact",
+    "intent_prediction": {
+      "name": "calculate_price",
+      "confidence": 0.4440840780735016
+    }
+  },
+  {
+    "text": "Không phải bây giờ.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "bot_limitations",
+      "confidence": 0.98659348487854
+    }
+  },
+  {
+    "text": "Tôi không đồng ý.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.49647969007492065
+    }
+  },
+  {
+    "text": "Tôi cần hổ trợ",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.8719276785850525
+    }
+  },
+  {
+    "text": "Ê",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.9185383915901184
+    }
+  },
+  {
+    "text": "Có ai không?",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.9706949591636658
+    }
+  },
+  {
+    "text": "Bạn là một chatbot, đúng không?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "bot_how_to_use",
+      "confidence": 0.5360299348831177
+    }
+  },
+  {
+    "text": "Bạn có phải là trợ lý ảo không?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.8198639154434204
+    }
+  },
+  {
+    "text": "Bạn có thể kể về mình không?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.6917771100997925
+    }
+  },
+  {
+    "text": "Bạn sử dụng công nghệ gì?",
+    "intent": "bot_capabilities",
+    "intent_prediction": {
+      "name": "bot_how_to_use",
+      "confidence": 0.9233754277229309
+    }
+  },
+  {
+    "text": "Bạn có thể làm việc nào ngoài hỗ trợ không?",
+    "intent": "bot_capabilities",
+    "intent_prediction": {
+      "name": "bot_limitations",
+      "confidence": 0.6102519631385803
+    }
+  },
+  {
+    "text": "Làm sao để tương tác với bạn?",
+    "intent": "bot_how_to_use",
+    "intent_prediction": {
+      "name": "contact",
+      "confidence": 0.46136340498924255
+    }
+  },
+  {
+    "text": "Hình như bạn lầm lẫn",
+    "intent": "bot_limitations",
+    "intent_prediction": {
+      "name": "send_image",
+      "confidence": 0.9947112798690796
+    }
+  },
+  {
+    "text": "Tôi chấp nhận",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "send_image",
+      "confidence": 0.9852637052536011
+    }
+  },
+  {
+    "text": "Ok, cảm ơn",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "thanks",
+      "confidence": 0.9690564274787903
+    }
+  },
+  {
+    "text": "Bạn có số điện thoại không?",
+    "intent": "contact",
+    "intent_prediction": {
+      "name": "book_consult",
+      "confidence": 0.9955353736877441
+    }
+  },
+  {
+    "text": "K",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.9253975749015808
+    }
+  },
+  {
+    "text": "Ko",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.5371371507644653
+    }
+  },
+  {
+    "text": "bạn có thể giúp tôi không?",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.7674771547317505
+    }
+  },
+  {
+    "text": "Bạn có thể hỗ trợ tôi không?",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.9768376350402832
+    }
+  },
+  {
+    "text": "Bạn có thể cho tôi biết bạn là ai không?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.6434106826782227
+    }
+  },
+  {
+    "text": "Bạn làm việc cho ai?",
+    "intent": "bot_introduction",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.9543662071228027
+    }
+  },
+  {
+    "text": "Bạn có thể giải thích chức năng của bạn không?",
+    "intent": "bot_capabilities",
+    "intent_prediction": {
+      "name": "bot_limitations",
+      "confidence": 0.6622958779335022
+    }
+  },
+  {
+    "text": "Tôi cần làm gì để nhận trợ giúp từ bạn?",
+    "intent": "bot_how_to_use",
+    "intent_prediction": {
+      "name": "bot_capabilities",
+      "confidence": 0.4069022536277771
+    }
+  },
+  {
+    "text": "Tôi đồng ý",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.6122727394104004
+    }
+  },
+  {
+    "text": "Đã rõ",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "thanks",
+      "confidence": 0.39511534571647644
+    }
+  },
+  {
+    "text": "Địa chỉ ở quận 9 hả",
+    "intent": "contact",
+    "intent_prediction": {
+      "name": "book_consult",
+      "confidence": 0.9674717783927917
+    }
+  },
+  {
+    "text": "Không, cảm ơn.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "thanks",
+      "confidence": 0.712415874004364
+    }
+  },
+  {
+    "text": "Tôi không muốn điều đó.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.8663283586502075
+    }
+  },
+  {
+    "text": "Để lần sau đi.",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.44591882824897766
+    }
+  },
+  {
+    "text": "Tôi cần bạn giúp đở",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.46676692366600037
+    }
+  },
+  {
+    "text": "Giúp tôi với",
+    "intent": "consult",
+    "intent_prediction": {
+      "name": "send_image",
+      "confidence": 0.892753541469574
+    }
+  }
+]
