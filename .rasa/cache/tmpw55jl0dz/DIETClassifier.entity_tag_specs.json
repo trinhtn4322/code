@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-category",
+      "2": "I-category",
+      "3": "L-category",
+      "4": "U-category",
+      "5": "B-name",
+      "6": "I-name",
+      "7": "L-name",
+      "8": "U-name",
+      "9": "B-phone",
+      "10": "I-phone",
+      "11": "L-phone",
+      "12": "U-phone",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-category": 1,
+      "I-category": 2,
+      "L-category": 3,
+      "U-category": 4,
+      "B-name": 5,
+      "I-name": 6,
+      "L-name": 7,
+      "U-name": 8,
+      "B-phone": 9,
+      "I-phone": 10,
+      "L-phone": 11,
+      "U-phone": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

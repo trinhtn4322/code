@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-length",
+      "2": "I-length",
+      "3": "L-length",
+      "4": "U-length",
+      "5": "B-width",
+      "6": "I-width",
+      "7": "L-width",
+      "8": "U-width",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-length": 1,
+      "I-length": 2,
+      "L-length": 3,
+      "U-length": 4,
+      "B-width": 5,
+      "I-width": 6,
+      "L-width": 7,
+      "U-width": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]
