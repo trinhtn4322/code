@@ -191,6 +191,8 @@ forms:
         - name
         - phone_number
   send_consult:
+    ignored_intents:
+    - book_consult
     required_slots:
       - type
       - length
@@ -199,6 +201,8 @@ forms:
       - address
       - weight
   calculate_price:
+    ignored_intents:
+    - book_consult
     required_slots:
       - type
       - length

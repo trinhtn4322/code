@@ -1,7 +1,0 @@
-{
-  "rule_only_slots": [],
-  "rule_only_loops": [
-    "send_consult",
-    "calculate_price"
-  ]
-}

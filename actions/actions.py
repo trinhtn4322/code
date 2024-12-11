@@ -184,18 +184,20 @@ class ActionProcessImage(Action):
         if text:
             try:
                 if len(text) == 30:
-                    url = "http://57.155.0.174:5000/upload"
-                    img_url= "http://57.155.0.174:5000"
+                    url = "https://53a1-203-205-34-155.ngrok-free.app/upload"
+                    img_url= "https://53a1-203-205-34-155.ngrok-free.app"
                 else:
                     url="https://api.telegram.org/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI"
                     img_url="https://api.telegram.org/file/bot7596431038:AAHrfaqqbBvSdTscaFJ8oXegD9v5iJLfPfI"
                 # Giả sử `file_id` được lưu trữ trực tiếp trong `text`
                 file_id = text
                 # Gọi API Telegram để lấy thông tin file
+                print(file_id)
                 response = requests.get(
                     f"{url}/getFile?file_id={file_id}"
                 )
                 file_info = response.json()
+                print(file_info)
 
                 # Kiểm tra phản hồi từ API Telegram
                 if file_info.get('ok'):
@@ -212,13 +214,14 @@ class ActionProcessImage(Action):
                         n = layout(user_id, image_url)
                         if n == 0:
                             dispatcher.utter_message(text="Có vẻ ảnh hoặc tài liệu của bạn chưa đảm bảo chất lượng. Hãy tham khảo chất lượng ảnh tại đây.")
+                        elif n==1:
                             active = tracker.get_slot("mode")
-
+                            print("Debug 3")                        
                             if active=="consult":
                                 return [SlotSet("mode", "consult"),FollowupAction("send_consult")]
                             elif active=="calculate":
                                 return [SlotSet("mode", "calculate"),FollowupAction("calculate_price")]
-                        elif n==1:
+                       
                             dispatcher.utter_message(text="Tôi đã trích xuất thành công tài liệu của bạn. Bạn có thắc mắc gì về tài liệu này nào")
                         elif n == []:
                             dispatcher.utter_message(text="Có vẻ ảnh của bạn chưa đảm bảo chất lượng. Hãy tham khảo chất lượng ảnh tại đây.")
@@ -240,15 +243,11 @@ class ActionProcessImage(Action):
                             user_id = tracker.sender_id
                             save_to_db(user_id,"length",length)
                             save_to_db(user_id, "width", width)
-                            if active=="consult":
-                                return [SlotSet("mode", "consult"),FollowupAction("send_consult")]
-                            elif active=="calculate":
-                                return [SlotSet("mode","calculate"),FollowupAction("calculate_price")]
-                            return [
-                                SlotSet("width", width),
-                                SlotSet("length", length),
-                                SlotSet("area", area)
-                            ]
+#                            if active=="consult":
+ #                               return [SlotSet("mode", "consult"),FollowupAction("send_consult")]
+  #                          elif active=="calculate":
+                            print("debug 4")
+                            return [SlotSet("mode",None), FollowupAction("calculate_price")]
 
                     else:
                         dispatcher.utter_message(text="Không thể tải ảnh về từ server.")
@@ -302,7 +301,7 @@ class ActionCalculatePrice(FormValidationAction):
     def validate(self,dispatcher, tracker, domain, user_id):
         conversation_history=self.get_conver(dispatcher, tracker, domain, user_id)
         if len(conversation_history) > 1:
-            prompt = f"Lịch sử trò chuyện: {conversation_history}.Nếu lịch sử trống thì intent là inquire\ntrích xuất ra cho tôi ý định trong tin nhắn gần nhất của người dùng thông qua lịch sử bằng 1 trong 3 intent sau: Nếu người dùng không muốn tư vấn nửa:'stop',Nếu người dùng muốn tư vấn hay tính tiền: 'provide_information',Nếu người dùng muốn thay đổi thông tin: 'change_information', Nếu là các thắc mắc của người dùng thì: 'inquire'.Nếu là provide_information hoặc change thì xác định intent đó chứa entities nào và thông tin gì. Lưu ý thông tin phải lấy đúng của người dùng, Có thể viết lại cho đúng format câu hỏi, đúng chính tả, đúng viết hoa chứ không được đừng thay đổi ý nghĩa, Entities thì chỉ lấy 1 trong 4 entities:type(loại công trình), width(Chuyển thành số đơn vị m), length(Chuyển thành số đơn vị m), height(Chuyển thành số đơn vị tầng). Nếu không thuộc gì trong 4 cái đó thì entities là more.\n còn nếu là 'inquire' thì hãy đưa nó vào entities trong json). chỉ trả lời bằng file json theo cấu trúc 'intent':intent, 'entities':entity:thông tin của người dùng(chỉ chứ duy nhất 1 mình nó thôi), \nĐưa vào json tổng cộng 3 cái đó thôi, đừng giải thích bạn đang làm gì hay thêm context"
+            prompt = f"Lịch sử trò chuyện: {conversation_history}.Nếu lịch sử trống thì intent là inquire\ntrích xuất ra cho tôi ý định trong tin nhắn gần nhất của người dùng thông qua lịch sử bằng 1 trong 3 intent sau: Nếu người dùng không muốn tư vấn nửa:'stop',Nếu người dùng muốn tư vấn hay tính tiền: 'provide_information',Nếu người dùng muốn thay đổi thông tin: 'change_information', Nếu là các thắc mắc của người dùng thì: 'inquire'.Nếu là provide_information hoặc change thì xác định intent đó chứa entities nào và thông tin gì. Lưu ý thông tin phải lấy đúng của người dùng, Có thể viết lại cho đúng format câu hỏi, đúng chính tả, đúng viết hoa chứ không được đừng thay đổi ý nghĩa, Entities thì chỉ lấy 1 trong 4 entities:type(loại công trình), width(Chuyển thành số đơn vị m), length(Chuyển thành số đơn vị m), height(đơn vị tầng). Nếu không thuộc gì trong 4 cái đó thì entities là more.\n còn nếu là 'inquire' thì hãy đưa nó vào entities trong json). chỉ trả lời bằng file json theo cấu trúc 'intent':intent, 'entities':entity:thông tin của người dùng(chỉ chứ duy nhất 1 mình nó thôi), \nĐưa vào json tổng cộng 3 cái đó thôi, đừng giải thích bạn đang làm gì hay thêm context"
             confirmation_asked = tracker.get_slot("confirmation_asked")
             confirmation_change = tracker.get_slot("confirmation_change")
 
@@ -316,6 +315,7 @@ class ActionCalculatePrice(FormValidationAction):
                     return [SlotSet("confirmation_change", change), SlotSet("mode", consult)]
             else:
                 llm_response = gemini(prompt)
+                print(llm_response)
             if llm_response is None:
                 return []
             intent = llm_response.get("intent")
@@ -350,7 +350,8 @@ class ActionCalculatePrice(FormValidationAction):
                     if entity_key in ['length', 'width', 'height', 'address', 'weight', 'more']:
                         entities = entity_value
 
-                prompts = f"Bạn là một tư vấn viên trong ngành xây dựng nhà máy thép tiền chế, hãy giải đáp thắc mắc này 1 cách ngắn gọn nhưng vẫn lịch sự: {entities}. Có một số điều cần lưu ý, chiều dài và chiêuf rộng đơn vị mét, chiều cao đơn vị tầng, loại công trình là nhà xưởng, nhà thép, nhà thép tiền chế, vị trí là vị trí ở Việt Nam."
+                context = send_data_to_api(user_id, entities)
+                prompts = f"Bạn là một tư vấn viên và một kỹ sư xây dựng trong ngành nhà thép tiền chế, bạn hãy tư vấn cho khách hàng có câu hỏi:{entities} dựa vào nội dung ngữ cảnh sau :{context}. Hãy tư vấn lịch sự và ngắn gọn thôi. Chỉ tư vấn chứ đừng hỏi hay chào mời hàng hóa gì hết. Lưu ý nếu địa chỉ ở ngoài Việt Nam thì đừng tư vấn về vị trí nhé. Công ty chúng ta chỉ phục vụ trong nước thôi"
                 inquire_response = gemini(prompts)
                 dispatcher.utter_message(text=inquire_response)
                 return []
@@ -442,7 +443,9 @@ class ActionCalculatePrice(FormValidationAction):
             return [SlotSet("mode", "consult"), FollowupAction("send_consult")]
         elif current_mode == "calculate":
             intent = tracker.latest_message['intent'].get('name')
+
             confidence = tracker.latest_message['intent'].get('confidence', 0)
+            print("Debug 2")
             if intent == "detect_encoded_string" and confidence > 0.8:
                 return [FollowupAction("process_image"), SlotSet("mode", "calculate")]
             validation_events = self.validate(dispatcher, tracker, domain, user_id)
@@ -530,6 +533,10 @@ class ActionCalculatePrice(FormValidationAction):
                 dispatcher.utter_message(text="Bạn có muốn tôi giúp bạn tư vấn nhiều hơn về công trình này không?")
                 # return self.submit(dispatcher, tracker)
                 return False, None,
+            elif intent == "consult" and confidence > 0.8:
+                dispatcher.utter_message(
+                    text="Tôi sẽ tính tiền cho bạn trước, rồi sau đó chúng ta sẽ bắt đầu tư vấn về dự án, Bạn có muốn thay đổi thông tin gì không?")
+                return True, "calculate"
             else:
                 dispatcher.utter_message(
                     text="Tôi không hiểu ý bạn, Bạn có muốn thay đổi gì không?")
@@ -552,7 +559,7 @@ class ActionProcessFallback(Action):
         else:
             user_id = tracker.sender_id
             question = tracker.latest_message.get('text', '')
-            api_url = "https://61c0-2401-d800-d4b0-26e9-2922-904c-69f3-3f9.ngrok-free.app/process_question"
+            api_url = "https://53a1-203-205-34-155.ngrok-free.app/process_question"
             data=[]
             data.append(question)
             # Dữ liệu cần gửi
@@ -584,6 +591,31 @@ class ActionProcessFallback(Action):
                 print(f"Lỗi kết nối API: {e}")
             return []
 # ----------------------
+
+def send_data_to_api(user_id, data_list):
+    url = "https://61c0-2401-d800-d4b0-26e9-2922-904c-69f3-3f9.ngrok-free.app/process_question"
+
+    # Chuẩn bị dữ liệu gửi đi
+    payload = {
+        'user_id': user_id,
+        'data': data_list
+    }
+    headers = {'Content-Type': 'application/json'}
+    # Gửi POST request đến API
+    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    # Kiểm tra mã trạng thái phản hồi
+    if response.status_code == 200:
+        response_data = response.json()
+        # In ra user_id và context từ phản hồi
+        user_id = response_data.get('user_id')
+        context = response_data.get('context')
+
+        # In thông tin trả về từ API
+        print(f"User ID: {user_id}")
+        print(f"Context: {context}")
+        return context
+    else:
+        print(f"Error: {response.status_code} - {response.text}")
 
 class ActionBookFlow(FormValidationAction):
     def name(self) -> Text:
@@ -619,19 +651,29 @@ class ActionBookFlow(FormValidationAction):
 
 
     def run(self, dispatcher, tracker, domain):
-        name = tracker.get_slot("name")
-        phone = tracker.get_slot("phone")
-        user_id = tracker.sender_id
-        check=self.check_missing_columns(user_id)
-        if check==False:
+        print("Gọi 2 lần 30")
+        active = tracker.get_slot("mode")
+        if active == "consult":
+            print("Gọi 2 lần 4")
             return [SlotSet("mode", "consult"), FollowupAction("send_consult")]
+        elif active == "calculate":
+            print("Gọi 2 lần 5")
+            return [SlotSet("mode", "calculate"), FollowupAction("calculate_price")]
         else:
-            if not name or not phone:
-                dispatcher.utter_message("Vui lòng cung cấp tên và số điện thoại của bạn để chúng tôi có thể tư vấn.")
-                return []
-            dispatcher.utter_message(
-                f"Cảm ơn bạn, {name}! Chúng tôi đã nhận được thông tin số điện thoại của bạn: {phone}. Kỹ sư của chúng tôi sẽ sớm liên hệ với bạn.")
-        return [SlotSet("book", False)]
+            name = tracker.get_slot("name")
+            phone = tracker.get_slot("phone")
+            user_id = tracker.sender_id
+            check=self.check_missing_columns(user_id)
+            if check==False:
+                return [SlotSet("mode", "consult"), FollowupAction("send_consult")]
+            else:
+                if not name or not phone:
+                    dispatcher.utter_message("Vui lòng cung cấp tên và số điện thoại của bạn để chúng tôi có thể tư vấn.")
+                    return []
+                dispatcher.utter_message(
+                    f"Cảm ơn bạn, {name}! Chúng tôi đã nhận được thông tin số điện thoại của bạn: {phone}. Kỹ sư của chúng tôi sẽ sớm liên hệ với bạn.")
+            return [SlotSet("book", False)]
+
 
 class ActionConsultFlow(FormValidationAction):
     def name(self) -> Text:
@@ -673,17 +715,12 @@ class ActionConsultFlow(FormValidationAction):
         conversation_history=self.get_conver(dispatcher, tracker, domain, user_id)
         if len(conversation_history)>1:
             prompt = f"Lịch sử trò chuyện: {conversation_history}.Nếu lịch sử trống thì intent là inquire\ntrích xuất ra cho tôi ý định trong tin nhắn gần nhất của người dùng thông qua lịch sử bằng 1 trong 3 intent sau: Nếu người dùng không muốn tư vấn nửa:'stop',Nếu người dùng muốn tư vấn hay tính tiền: 'provide_information',Nếu người dùng muốn thay đổi thông tin: 'change_information', Nếu là các thắc mắc của người dùng thì: 'inquire'..Nếu là provide_information hoặc change thì xác định intent đó chứa entities nào và thông tin gì. Lưu ý thông tin phải lấy đúng của người dùng, Có thể viết lại cho đúng format câu hỏi, đúng chính tả, đúng viết hoa chứ không được đừng thay đổi ý nghĩa, Entities thì chỉ lấy 1 trong 6 entities:type(loại công trình), width(Chuyển thành số đơn vị m), length(Chuyển thành số đơn vị m), height(Chuyển thành số đơn vị tầng), weight(Chuyển thành số đơn vị tấn), address(chữ). Nếu không thuộc gì trong 6 cái đó thì entities là more.\n còn nếu là 'inquire' thì hãy đưa nó vào entities trong json). chỉ trả lời bằng file json theo cấu trúc 'intent':intent, 'entities':entity:thông tin của người dùng(chỉ chứ duy nhất 1 mình nó thôi), \nĐưa vào json tổng cộng 3 cái đó thôi, đừng giải thích bạn đang làm gì hay thêm context"
-
-            llm_response = gemini(prompt)
-
-            if llm_response is None:
-                dispatcher.utter_message(text="Xin lỗi, tôi không thể xử lý thông tin hiện tại. Hãy thử lại sau.")
-                return []
-
             confirmation_asked = tracker.get_slot("confirmation_asked")
             confirmation_change = tracker.get_slot("confirmation_change")
+            print(confirmation_asked)
 
             if confirmation_asked == True:
+                print("ok1")
                 llm_response = {'intent': 'stop'}
             elif confirmation_change == True:
                 change, consult = self.bef_submit(dispatcher, tracker, user_id)
@@ -691,7 +728,13 @@ class ActionConsultFlow(FormValidationAction):
                     return self.submit(dispatcher, tracker)
                 else:
                     return [SlotSet("confirmation_change", change), SlotSet("mode", consult)]
+            else:
+                llm_response = gemini(prompt)
+                print("cc", llm_response)
 
+            if llm_response is None:
+                dispatcher.utter_message(text="Xin lỗi, tôi không thể xử lý thông tin hiện tại. Hãy thử lại sau.")
+                return []
             intent = llm_response.get("intent")
 
             # Xử lý theo intent của AI response
@@ -723,8 +766,8 @@ class ActionConsultFlow(FormValidationAction):
                 for entity_key, entity_value in entities.items():
                     if entity_key in ['length', 'width', 'height', 'address', 'weight', 'more']:
                         entities = entity_value
-
-                prompts = f"Bạn là một tư vấn viên trong ngành xây dựng nhà máy thép tiền chế, hãy giải đáp thắc mắc này 1 cách ngắn gọn nhưng vẫn lịch sự: {entities}. Có một số điều cần lưu ý, chiều dài và chiêuf rộng đơn vị mét, chiều cao đơn vị tầng, loại công trình là nhà xưởng, nhà thép, nhà thép tiền chế, vị trí là vị trí ở Việt Nam."
+                context = send_data_to_api(user_id, entities)
+                prompts = f"Bạn là một tư vấn viên và một kỹ sư xây dựng trong ngành nhà thép tiền chế, bạn hãy tư vấn cho khách hàng có câu hỏi:{entities} dựa vào nội dung ngữ cảnh sau :{context}. Hãy tư vấn lịch sự và ngắn gọn thôi. Chỉ tư vấn chứ đừng hỏi hay chào mời hàng hóa gì hết. Lưu ý nếu địa chỉ ở ngoài Việt Nam thì đừng tư vấn về vị trí nhé. Công ty chúng ta chỉ phục vụ trong nước thôi"
                 inquire_response = gemini(prompts)
                 dispatcher.utter_message(text=inquire_response)
                 return []
@@ -858,10 +901,12 @@ class ActionConsultFlow(FormValidationAction):
         current_mode = tracker.get_slot("mode")
         user_id = tracker.sender_id
         check = self.check_user_fields(user_id)
+        confirmation_change=tracker.get_slot("confirmation_change")
         if check == False:
             return [SlotSet("mode", "calculate"), FollowupAction("calculate_price")]
-
         elif current_mode == "calculate":
+            if confirmation_change==True:
+                return [SlotSet("mode", "calculate"), FollowupAction("calculate_price")]
             return [SlotSet("mode", "consult"), FollowupAction("send_consult")]
         elif current_mode == "consult":
             check=self.check_user_fields(user_id)
@@ -870,7 +915,8 @@ class ActionConsultFlow(FormValidationAction):
             intent = tracker.latest_message['intent'].get('name')
             confidence = tracker.latest_message['intent'].get('confidence', 0)
             if intent == "detect_encoded_string" and confidence > 0.8:
-                return [FollowupAction("process_image"), SlotSet("mode", "consult")]
+                print("debug")
+                return [FollowupAction("process_image"), SlotSet("mode", "calculate")]
             validation_events = self.validate(dispatcher, tracker, domain, user_id)
             next_slot = self.request_next_slot(dispatcher, tracker, domain, user_id)
             if validation_events:
@@ -896,6 +942,12 @@ class ActionConsultFlow(FormValidationAction):
                 return [FollowupAction("send_consult")]
             else:
                 return [SlotSet("confirmation_change", change), SlotSet("mode", consult)]
+                llm_response = gemini(prompt)
+                print("cc", llm_response)
+
+            if llm_response is None:
+                dispatcher.utter_message(text="Xin lỗi, tôi không thể xử lý thông tin hiện tại. Hãy thử lại sau.")
+                return []
 
     def get_construction_info(self,user_id):
         # Kết nối cơ sở dữ liệu
@@ -916,23 +968,23 @@ class ActionConsultFlow(FormValidationAction):
         weight = float(re.match(r"(\d+(\.\d+)?)(\s?[a-zA-Z]+)?", weight).group(1))
         # Tính toán diện tích
         area = length * width
+       
         if area < 10:
-            area_str = f"{type_construction} bé hơn 10m²"
+            area_str = f"{type_construction} bé hơn 10m2"
         elif 10 <= area <= 50:
-            area_str = f"{type_construction} từ 10m² đến 50m²"
+            area_str = f"{type_construction} từ 10m2 đến 50m2"
         elif 50 < area <= 100:
-            area_str = f"{type_construction} từ 50m² đến 100m²"
+            area_str = f"{type_construction} từ 50m2 đến 100m2"
         elif 100 < area <= 200:
-            area_str = f"{type_construction} từ 100m² đến 200m²"
+            area_str = f"{type_construction} từ 100m2 đến 200m2"
         elif 200 < area <= 500:
-            area_str = f"{type_construction} từ 200m² đến 500m²"
+            area_str = f"{type_construction} từ 200m2 đến 500m2"
         elif 500 < area <= 1000:
-            area_str = f"{type_construction} từ 500m² đến 1000m²"
+            area_str = f"{type_construction} từ 500m2 đến 1000m2"
         elif 1000 < area <= 2000:
-            area_str = f"{type_construction} từ 1000m² đến 2000m²"
+            area_str = f"{type_construction} từ 1000m2 đến 2000m2"
         else:
-            area_str = f"{type_construction} trên 2000m²"
-
+            area_str = f"{type_construction} trên 2000m2"
         # Xác định trọng tải
         if weight < 10:
             weight_str = f"{type_construction} có trọng tải nhỏ 10 tấn"
@@ -970,7 +1022,7 @@ class ActionConsultFlow(FormValidationAction):
         return result, base
 
     def send_data_to_api(self,user_id, data_list):
-        url = "https://61c0-2401-d800-d4b0-26e9-2922-904c-69f3-3f9.ngrok-free.app/process_question"
+        url = "https://53a1-203-205-34-155.ngrok-free.app/process_question"
 
         # Chuẩn bị dữ liệu gửi đi
         payload = {
@@ -1020,7 +1072,7 @@ class ActionConsultFlow(FormValidationAction):
                     dispatcher.utter_message(text=f"{name}: {value}")
             dispatcher.utter_message(
                 text="Bạn có muốn xác nhận lại và thay đổi thông tin không? Nếu không, chúng tôi sẽ bắt đầu tư vấn dựa trên thông tin này. Nếu có bạn sẽ phải điền lại thông tin từ đầu!")
-            return True, True
+            return True, "consult"
         else:
             # Kiểm tra và xử lý xác nhận thay đổi
             intent = tracker.latest_message['intent'].get('name')
@@ -1029,11 +1081,11 @@ class ActionConsultFlow(FormValidationAction):
                 dispatcher.utter_message(text="Được vậy giờ tôi sẽ thu thập thông tin lại từ đầu")
                 delete_all_rows()
                 ask_next_slot('type', dispatcher)
-                return False, "consult"
+                return False, "calculate"
             elif intent == "deny" and confidence > 0.8:
                 dispatcher.utter_message(text="Vậy tôi sẽ bắt đầu tư vấn!")
                 construction_info, base = self.get_construction_info(user_id)
-                context=self.send_data_to_api(user_id, construction_info)
+                context=send_data_to_api(user_id, construction_info)
                 prompt_consult=f"Bạn là một tư vấn viên và một kỹ sư xây dựng trong ngành nhà thép tiền chế, bạn hãy tư vấn cho khách hàng có thông tin:{base} dựa vào nội dung ngữ cảnh sau :{context}. Hãy tư vấn lịch sự và ngắn gọn thôi. Chỉ tư vấn chứ đừng hỏi hay chào mời hàng hóa gì hết. Lưu ý nếu địa chỉ ở ngoài Việt Nam thì đừng tư vấn về vị trí nhé. Công ty chúng ta chỉ phục vụ trong nước thôi"
                 dispatcher.utter_message(
                     text=gemini(prompt_consult))
@@ -1249,4 +1301,3 @@ class ActionAskProduct(Action):
         else:
             dispatcher.utter_message(template="acc_thanks")
             return []
-

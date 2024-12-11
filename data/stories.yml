@@ -1104,12 +1104,12 @@ stories:
     - intent: affirm
     - action: acc_affirm
     - intent: consult
-    - action: acc_no_result
+    - action: send_consult
 
   - story: deny_consult
     steps:
     - intent: consult
-    - action: acc_no_result
+    - action: send_consult
     - intent: deny
     - action: acc_deny
 
@@ -1160,7 +1160,7 @@ stories:
     - intent: bot_how_to_use
     - action: acc_bot_how_to_use
     - intent: consult
-    - action: acc_no_result
+    - action: send_consult
 
   - story: book_consult_after_image
     steps:
@@ -1226,7 +1226,7 @@ stories:
     - intent: bot_limitations
     - action: acc_bot_limitations
     - intent: consult
-    - action: acc_no_result
+    - action: send_consult
 
   - story: deny_after_how_to_use
     steps:
@@ -1275,7 +1275,7 @@ stories:
     - intent: contact
     - action: acc_contact
     - intent: consult
-    - action: acc_no_result
+    - action: send_consult
 
   - story: goodbye_after_affirm
     steps:
@@ -1317,7 +1317,7 @@ stories:
     - intent: detect_encoded_string
     - action: process_image
     - intent: consult
-    - action: acc_no_result
+    - action: send_consult
 
   - story: deny_after_send_image
     steps:
@@ -1387,7 +1387,7 @@ stories:
   - story: Consult, affirm, detect encoded string, goodbye
     steps:
       - intent: consult
-      - action: acc_no_result
+      - action: send_consult
       - intent: affirm
       - action: acc_affirm
       - intent: detect_encoded_string
@@ -1412,7 +1412,7 @@ stories:
       - intent: greet
       - action: acc_greet
       - intent: consult
-      - action: acc_no_result
+      - action: send_consult
       - intent: calculate_price
       - action: calculate_price
       - intent: deny
@@ -1448,7 +1448,7 @@ stories:
       - intent: contact
       - action: acc_contact
       - intent: consult
-      - action: acc_no_result
+      - action: send_consult
       - intent: goodbye
       - action: acc_goodbye
 
@@ -1466,7 +1466,7 @@ stories:
   - story: Consult, send image, affirm, thanks
     steps:
       - intent: consult
-      - action: acc_no_result
+      - action: send_consult
       - intent: send_image
       - action: acc_send_image
       - intent: affirm
@@ -1501,11 +1501,10 @@ stories:
   - story: Consult, affirm, calculate price, goodbye
     steps:
       - intent: consult
-      - action: acc_no_result
+      - action: send_consult
       - intent: affirm
       - action: acc_affirm
       - intent: calculate_price
       - action: calculate_price
       - intent: goodbye
       - action: acc_goodbye
-
